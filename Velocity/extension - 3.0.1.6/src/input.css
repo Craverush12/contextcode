@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Amenti';
+    /* src: url('../assets/amenti-clean-modern-sans-64253813/Amenti\ Regular.ttf') format('ttf'),
+         url('/assets/amenti-clean-modern-sans-64253813/Amenti\ Regular.otf') format('otf'); */
+         src: url('fonts/Amenti-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }

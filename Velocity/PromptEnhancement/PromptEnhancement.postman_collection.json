@@ -1,0 +1,379 @@
+{
+	"info": {
+		"name": "PromptEnhancement API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "General",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/health",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Enhancement",
+			"item": [
+				{
+					"name": "Enhance Prompt (Stream)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"prompt\": \"Write a python script to automate daily reports.\",\n    \"user_id\": \"user123\",\n    \"config\": {\n        \"quality\": \"high\",\n        \"creativity\": \"low\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/enhance/stream",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"enhance",
+								"stream"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refine Prompt",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"prompt\": \"make it better\",\n    \"conversation_context\": [\n        {\"role\": \"user\", \"content\": \"How do I write a python script?\"},\n        {\"role\": \"assistant\", \"content\": \"You can use the `os` and `pandas` libraries.\"}\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/refine",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"refine"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Analysis",
+			"item": [
+				{
+					"name": "Analyze Prompt",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"prompt\": \"Give me code for a flask server.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/analyze",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"analyze"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Analyze Prompt Quality",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"prompt\": \"how to build a website\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/analyze-quality",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"analyze-quality"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Intent",
+			"item": [
+				{
+					"name": "Identify Intent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"prompt\": \"I want to know the weather in London tomorrow.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/identify-intent",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"identify-intent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Analyze Intent Adoption",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": \"user123\",\n    \"interaction\": {\n        \"prompt\": \"show me the latest news\",\n        \"intent\": \"information_retrieval\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/intent/adoption-analysis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"intent",
+								"adoption-analysis"
+							]
+						}
+					},
+					"response": []
+				},
+                {
+					"name": "Get User Adoption Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/intent/adoption-profile/user123",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"intent",
+								"adoption-profile",
+                                "user123"
+							]
+						}
+					},
+					"response": []
+				},
+                {
+					"name": "Get Platform Adoption Analytics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/intent/platform-analytics",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"intent",
+								"platform-analytics"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+        {
+			"name": "Intelligence",
+			"item": [
+				{
+					"name": "Classify Website",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"url\": \"https://www.wikipedia.org/\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/classify-website",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"classify-website"
+							]
+						}
+					},
+					"response": []
+				}
+            ]
+        },
+		{
+			"name": "Context",
+			"item": [
+				{
+					"name": "Upload Context",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/path/to/your/file.txt"
+								},
+								{
+									"key": "title",
+									"value": "My Document",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/context/upload",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"context",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Context",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": \"What is the main idea of the document?\",\n    \"user_id\": \"user123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/context/retrieve",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"context",
+								"retrieve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Context Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/context/some_context_id/info",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"context",
+								"some_context_id",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Context",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/context/some_context_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"context",
+								"some_context_id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8005"
+		}
+	]
+}

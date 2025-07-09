@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /profile/
+Disallow: /prompt-box/
+Disallow: /prompt-library/
+
+# Allow static assets and public pages
+Allow: /assets/
+Allow: /login
+Allow: /register
+Allow: /privacypolicy
+Allow: /terms-and-conditions
+
+# Add your sitemap
+Sitemap: https://thinkvelocity.in/sitemap.xml

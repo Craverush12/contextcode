@@ -1,0 +1,165 @@
+/* styles.css */
+@media screen and (min-width: 712px) and (max-width: 853px) {
+    .built-for-container {
+      padding: 3rem 1.5rem;
+    }
+
+    .built-for-title {
+      font-size: 2.5rem;
+      margin-bottom: 2.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .category-grid {
+      gap: 2rem;
+    }
+
+    .category-item {
+      max-width: 300px;
+      padding: 0 1rem;
+    }
+
+    .image-container {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 1.25rem;
+    }
+
+    .category-title {
+      font-size: 1.125rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .category-description {
+      font-size: 0.875rem;
+      width: 85%;
+      margin: 0 auto;
+      line-height: 1.4;
+    }
+
+    .second-row {
+      gap: 2.5rem;
+    }
+  }
+
+  @media screen and (min-width: 853px) and (max-width: 1280px) {
+    .built-for-container {
+      padding: 3rem 1.5rem;
+    }
+
+    .category-grid {
+      gap: 2rem;
+    }
+
+    .category-item {
+      max-width: 320px;
+    }
+
+    .image-container {
+      width: 130px;
+      height: 130px;
+    }
+
+    .category-description {
+      width: 80%;
+      font-size: 0.875rem;
+    }
+  }
+  @font-face {
+    font-family: 'Amenti Black';
+    src: url('/fonts/AmentiBlack.woff2') format('woff2'),
+         url('/fonts/AmentiBlack.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: 'Switzer';
+    src: url('/fonts/Switzer-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('/fonts/DMSans-VariableFont_opsz,wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
+
+
+  .release-note-title {
+    font-family: 'Amenti Black', sans-serif;
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    margin-top: 100px;
+  }
+
+  @media (min-width: 768px) {
+    .release-note-title {
+      font-size: 7rem;
+      margin-top: 0;
+    }
+  }
+
+  .release-note-heading {
+    font-family: 'Amenti Black', sans-serif;
+    background: linear-gradient(to right, #fff, #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: normal;
+  }
+
+  @media (max-width: 768px) {
+    .release-note-heading {
+      font-size: 3rem;
+    }
+  }
+
+  .custom-scrollbar {
+    /* For Webkit browsers (Chrome, Safari) */
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.3); /* Slate color with opacity */
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(148, 163, 184, 0.5);
+    }
+
+    /* For Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
+  }
+
+  @media screen and (max-width: 768px) {
+    .release-note-title {
+      margin-top: 1rem;
+    }
+
+    .custom-scrollbar {
+      padding: 0.5rem;
+    }
+  }
+
+  .switzer-font {
+    font-family: 'Switzer', sans-serif;
+  }
+
+  .dm-sans-font {
+    font-family: 'DM Sans', sans-serif;
+  }
+

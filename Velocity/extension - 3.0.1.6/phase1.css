@@ -1,0 +1,5057 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+/* Apply Montserrat font to the tutorial message box and its buttons */
+.introjs-tooltip,
+.introjs-tooltiptext,
+.introjs-button,
+.customTooltip .introjs-button {
+  font-family: 'Montserrat', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --border-radius: 16px;
+  --tooltip-bg: #444444de;
+  --tooltip-text: rgb(255, 255, 255);
+  --button-bg: #2d9cdb;
+  --button-hover-bg: #2488c5;
+  --skip-button-color: rgba(255, 255, 255, 0.6);
+  --skip-button-hover-color: rgb(99, 99, 99);
+  --progress-bg: #e0e0e0;
+}
+
+/* Add these rules at the end of your CSS file */
+body, .app-container, #root, #app {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+@font-face {
+  font-family: 'Amenti';
+  src: url('assets/amenti-clean-modern-sans-64253813/Amenti Regular.otf') format('opentype');
+  src: url('assets/amenti-clean-modern-sans-64253813/Amenti Regular.ttf') format('opentype');
+}
+
+html, body {
+  width: 450px !important;
+  max-height: 600px !important;
+  overflow: hidden !important;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 0;
+  border: none; /* Add this to remove any borders */
+}
+
+body{
+  width: 450px !important;
+}
+
+
+.app-container {
+  position: relative;
+  height: 100%;
+  width: 450px !important; /* Previously 100vw */
+  max-width: 450px !important;
+  margin: 0; /* Center the container horizontally */
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  border: none; /* Add this to remove any borders */
+  box-shadow: none; /* Remove any shadow that might appear as a border */
+}
+
+.dark-mode .app-container {
+  background-color: var(--dark-bg);
+}
+
+.main-content {
+  width: 100%;
+  max-width: 450px !important;
+  height: 100%; /* Ensure it stretches across the entire container */
+  transition: opacity 0.3s ease-out;
+}
+
+.main-content.hidden {
+opacity: 0;
+pointer-events: none;
+}
+
+.debug-highlight {
+outline: 2px solid red !important;
+}
+
+.velocity-overlay {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, 0.7);
+backdrop-filter: blur(4px);
+z-index: 9999;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.velocity-loader-container {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+z-index: 9999;
+display: none;
+}
+
+.velocity-loader-overlay {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, 0.7);
+backdrop-filter: blur(4px);
+display: none;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+}
+
+.velocity-loader-content {
+background: white;
+padding: 24px;
+border-radius: 12px;
+text-align: center;
+}
+
+.velocity-loader-spinner {
+width: 40px;
+height: 40px;
+margin: 0 auto 16px;
+border: 3px solid #E5E7EB;
+border-top-color: #0284C7;
+border-radius: 50%;
+animation: velocity-spin 1s linear infinite;
+}
+
+.velocity-loader-message {
+color: #1F2937;
+font-size: 14px;
+}
+
+.velocity-loader-text {
+color: #1F2937;
+font-size: 14px;
+line-height: 1.4;
+}
+
+@keyframes velocity-spin {
+to { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+from { opacity: 0; transform: translateX(20px); }
+to { opacity: 1; transform: translateX(0); }
+}
+
+/* Dark mode styles */
+.dark-mode .velocity-loader-content {
+background: #1F2937;
+}
+
+.dark-mode .velocity-loader-text {
+color: #F3F4F6;
+}
+
+.velocity-loader {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 16px;
+}
+
+.velocity-spinner {
+width: 40px;
+height: 40px;
+border: 3px solid #f3f3f3;
+border-top: 3px solid #0284C7;
+border-radius: 50%;
+animation: spin 1s linear infinite;
+}
+
+.velocity-loader-text {
+color: white;
+font-size: 14px;
+text-align: center;
+}
+
+.velocity-scroll-indicator {
+position: absolute;
+right: 16px;
+bottom: 16px;
+background: rgba(0, 0, 0, 0.8);
+color: white;
+padding: 8px 12px;
+border-radius: 20px;
+display: flex;
+align-items: center;
+gap: 8px;
+opacity: 1;
+transition: opacity 0.3s ease;
+}
+
+.velocity-scroll-icon {
+width: 24px;
+height: 24px;
+border: 2px solid #0284C7;
+border-radius: 12px;
+position: relative;
+}
+
+.velocity-scroll-dot {
+position: absolute;
+top: 4px;
+left: 50%;
+transform: translateX(-50%);
+width: 4px;
+height: 4px;
+background: #0284C7;
+border-radius: 50%;
+animation: scrollBounce 1.5s infinite;
+}
+
+.velocity-error {
+background: rgba(239, 68, 68, 0.1);
+border: 1px solid rgba(239, 68, 68, 0.2);
+padding: 12px 16px;
+border-radius: 8px;
+display: flex;
+align-items: center;
+gap: 12px;
+margin: 16px 24px;
+}
+
+.velocity-error-icon {
+flex-shrink: 0;
+color: rgb(239, 68, 68);
+}
+
+.velocity-error-content {
+flex-grow: 1;
+font-size: 14px;
+color: rgb(239, 68, 68);
+}
+
+.velocity-token-alert {
+background: rgba(251, 191, 36, 0.1);
+border: 1px solid rgba(251, 191, 36, 0.2);
+padding: 16px;
+border-radius: 8px;
+margin: 16px 24px;
+}
+
+.velocity-token-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 8px;
+}
+
+.velocity-token-title {
+font-weight: 500;
+color: #F59E0B;
+}
+
+.velocity-token-message {
+font-size: 14px;
+color: #78350F;
+margin-bottom: 16px;
+}
+
+.velocity-token-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 8px 16px;
+background: #F59E0B;
+color: white;
+border-radius: 6px;
+font-size: 14px;
+font-weight: 500;
+transition: all 0.2s ease;
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+@keyframes scrollBounce {
+0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+40% { transform: translateY(4px) translateX(-50%); }
+60% { transform: translateY(2px) translateX(-50%); }
+}
+
+/* Skeleton loader animation is already defined elsewhere in the CSS */
+
+/* Dark mode variants */
+.dark-mode .velocity-error {
+background: rgba(239, 68, 68, 0.2);
+}
+
+.dark-mode .velocity-token-alert {
+background: rgba(251, 191, 36, 0.2);
+}
+
+.dark-mode .velocity-token-message {
+color: #FCD34D;
+}
+
+/* Settings Panel Styles */
+.settings-wrapper {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.settings-wrapper.visible {
+  opacity: 1;
+  visibility: visible;
+  display: block !important;
+  overflow: auto; /* Allow scrolling when content exceeds the container */
+}
+
+.dark-mode .settings-wrapper {
+  background-color: #152a31;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  text-align: center;
+}
+
+.settings-content {
+  padding: 16px;
+  padding-bottom: 30px;
+  overflow-y: auto;
+  flex-grow: 1;
+  max-height: calc(100% - 60px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make settings content scrollable when additional settings are shown */
+.settings-wrapper.visible .settings-content {
+  height: 100%;
+  max-height: 550px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #00c8ed #f0f0f0;
+}
+
+/* Custom scrollbar for Webkit browsers */
+.settings-wrapper.visible .settings-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.settings-wrapper.visible .settings-content::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.settings-wrapper.visible .settings-content::-webkit-scrollbar-thumb {
+  background-color: #00c8ed;
+  border-radius: 4px;
+}
+
+/* Dark mode scrollbar */
+.dark-mode .settings-wrapper.visible .settings-content {
+  scrollbar-color: #00a0c0 #2a3a45;
+}
+
+.dark-mode .settings-wrapper.visible .settings-content::-webkit-scrollbar-track {
+  background: #2a3a45;
+}
+
+.dark-mode .settings-wrapper.visible .settings-content::-webkit-scrollbar-thumb {
+  background-color: #00a0c0;
+}
+
+.setting-group label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: black;
+}
+
+/* Word Count Slider */
+.word-count-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.word-count-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 11px;
+  border-radius: 6px;
+  background: white;
+  border: 2px solid black;
+  outline: none;
+  flex-grow: 1;
+}
+
+.word-count-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: url('./assets/slider-thumb.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  border: none;
+  margin-top: -2px; /* Adjust vertical position */
+}
+
+.word-count-slider::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: url('./assets/slider-thumb.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  border: none;
+}
+
+.word-count-display {
+  min-width: 89px;
+  padding: 8px 12px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Selectors Row */
+.selectors-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.selector-column {
+  flex: 1;
+}
+
+/* Template and Language Selectors */
+.template-selector {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 14px;
+  font-weight: 500;
+  /* box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8); */
+  cursor: pointer;
+}
+
+/* Custom Instructions Textarea */
+.custom-message {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 14px;
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  resize: vertical;
+  /* box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8); */
+}
+
+/* Action Buttons */
+.settings-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.additional-setting-button {
+  padding: 12px 20px;
+  background-color: white;
+  color: black;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex: 1;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+.additional-setting-button:hover {
+  background-color: #f5f5f5;
+}
+
+.additional-setting-button:active {
+  background-color: #eeeeee;
+}
+
+.apply-settings-button {
+  padding: 12px 20px;
+  background-color: #00c8ed;
+  color: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex: 1;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+.apply-settings-button:hover {
+  background-color: #00b8dd;
+}
+
+.apply-settings-button:active {
+  background-color: #00a8cd;
+}
+
+
+
+.dark-mode .settings-header h2 {
+  color: white;
+}
+
+.dark-mode .setting-group label {
+  color: white;
+}
+
+.dark-mode .word-count-slider {
+  background: #133a44;
+  border-color: #000000b0;
+}
+
+.dark-mode .word-count-slider::-webkit-slider-thumb {
+  background: url('./assets/Velocity.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
+.dark-mode .word-count-slider::-moz-range-thumb {
+  background: url('./assets/Velocity.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
+.dark-mode .word-count-display {
+  background-color: #1f1f1f;
+  color: #bbbbbb;
+  border-color: #000000;
+}
+
+.dark-mode .template-selector {
+  background-color: #1f1f1f;
+    color: white;
+    border-color: #080808c2;
+}
+
+.dark-mode .template-selector option {
+  background-color: #152a31;
+  color: white;
+}
+
+.dark-mode .custom-message {
+  background-color: #1f1f1f;
+    color: white;
+    border-color: #080808c2;
+}
+
+.dark-mode .custom-message::placeholder {
+  color: #8a9aa5;
+}
+
+.dark-mode .additional-setting-button {
+  background-color: #1f1f1f;
+  color: white;
+  border-color: #000000b0;
+}
+
+.dark-mode .additional-setting-button:hover {
+  background-color: #292929;
+}
+
+.dark-mode .apply-settings-button {
+  background-color: hsl(190, 100%, 37%);
+  color: #000000;
+  border: 1px solid;
+}
+
+.dark-mode .apply-settings-button:hover {
+  background-color: hsl(190, 100%, 30%);
+}
+
+/* Additional Settings Section */
+.additional-settings-section {
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  position: relative;
+  width: 100%;
+}
+
+.additional-settings-section.visible {
+  max-height: none; /* Remove max-height restriction to allow full content display */
+  opacity: 1;
+  overflow: visible; /* Allow content to be visible */
+}
+
+.additional-settings-section.hidden {
+  display: none;
+}
+
+/* Radio Options */
+.radio-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: flex-start;
+}
+
+.radio-option input[type="radio"] {
+  margin-top: 4px;
+  margin-right: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+}
+
+.radio-option input[type="radio"]:checked {
+  background-color: white;
+  box-shadow: inset 0 0 0 4px #000000;
+}
+
+.radio-option label {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.radio-title {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.radio-description {
+  font-size: 12px;
+  color: #666;
+  font-weight: normal;
+}
+
+/* Back Button */
+.additional-settings-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.back-button {
+  padding: 10px 20px;
+  background-color: white;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.back-button:hover {
+  background-color: #f5f5f5;
+}
+
+.back-button:active {
+  background-color: #eeeeee;
+}
+
+.dark-mode .radio-option input[type="radio"] {
+  border-color: #00000073;
+    background: #1f1f1f;
+}
+
+.dark-mode .radio-option input[type="radio"]:checked {
+  background-color: #1f1f1f;
+  box-shadow: inset 0 0 0 4px #ffffff;
+}
+
+.dark-mode .radio-description {
+  color: #aaa;
+}
+
+.dark-mode .back-button {
+  background-color: #2a3a45;
+  color: white;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .back-button:hover {
+  background-color: #3a4a55;
+}
+
+/* Word Count Slider */
+.word-count-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.word-count-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 4px;
+  background: white;
+  border: 2px solid black;
+  outline: none;
+}
+
+.word-count-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: url('./assets/Velocity.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  border: none;
+  margin-top: -2px; /* Adjust vertical position */
+}
+
+.word-count-slider::-moz-range-thumb {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: url('./assets/Velocity.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  border: none;
+}
+
+/* Template Selector */
+.template-selector, .language-selector {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 14px;
+  font-weight: 500;
+  /* box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8); */
+  cursor: pointer;
+}
+
+/* Complexity Level Selector and Output Format Selector */
+.complexity-options,
+.format-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.complexity-option,
+.format-option {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.complexity-option input[type="radio"],
+.format-option input[type="radio"] {
+  margin-top: 4px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.complexity-option label,
+.format-option label {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.complexity-title,
+.format-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.complexity-desc,
+.format-desc {
+  font-size: 12px;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* Dark mode adjustments */
+.dark-mode .complexity-desc,
+.dark-mode .format-desc {
+  color: #aaa;
+}
+
+/* Custom Message Textarea */
+.custom-message {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 14px;
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  resize: vertical;
+  /* box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8); */
+}
+
+/* Save Button */
+.save-preferences-button {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 0 16px 16px;
+  padding: 12px 24px;
+  background-color: #00c8ed;
+  color: black;
+  border: 2px solid black;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+  transition: all 0.15s ease;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.save-preferences-button:hover {
+  background-color: #00daff;
+}
+
+.save-preferences-button:active {
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
+  top: 2px;
+  left: 2px;
+}
+
+/* Settings Notification */
+.settings-notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background-color: #00c8ed;
+  color: black;
+  padding: 12px 24px;
+  border: 2px solid black;
+  border-radius: 8px;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+  z-index: 10002;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 250px;
+  max-width: 90%;
+}
+
+.settings-notification.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Notification content container */
+.notification-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+/* Notification icons */
+.notification-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 16px;
+  margin-right: 4px;
+}
+
+/* Type-specific styles with improved contrast */
+.settings-notification-success {
+  background-color: #0a6e31; /* Darker green for better contrast */
+  color: white;
+  border-color: #064023;
+}
+
+.settings-notification-error {
+  background-color: #d32f2f; /* Darker red for better contrast */
+  color: white;
+  border-color: #9a0007;
+}
+
+.settings-notification-info {
+  background-color: #0277bd; /* Darker blue for better contrast */
+  color: white;
+  border-color: #004c8c;
+}
+
+/* Dismiss button styles */
+.notification-dismiss {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 18px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Focus styles for keyboard navigation */
+.notification-dismiss:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Dark mode styles for notifications */
+.dark-mode .settings-notification {
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+}
+
+.dark-mode .settings-notification-success {
+  background-color: #0a6e31;
+}
+
+.dark-mode .settings-notification-error {
+  background-color: #d32f2f;
+}
+
+.dark-mode .settings-notification-info {
+  background-color: #0277bd;
+}
+
+/* Dark Mode Styles for Settings Panel */
+.dark-mode .settings-panel {
+  background-color: #152a31;
+  border-color: #2A3A45;
+  color: white;
+}
+
+.dark-mode .settings-header h2 {
+  color: white;
+}
+
+.dark-mode .settings-close {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .settings-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .setting-group label {
+  color: white;
+}
+
+/* Dark mode styles for custom message textarea */
+.dark-mode .custom-message {
+  background-color: #1f1f1f;
+  color: white;
+  border-color: #000000b0;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .custom-message::placeholder {
+  color: #8a9aa5;
+}
+
+/* Dark mode styles for save button */
+.dark-mode .save-preferences-button {
+  background-color: hsl(190, 100%, 37%);
+  color: white;
+  border-color: #1a3a45;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .save-preferences-button:hover {
+  background-color: hsl(190, 100%, 30%);
+}
+
+.dark-mode .save-preferences-button:active {
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+}
+
+#logoutButton, #signupButton {
+transition: all 0.3s ease;
+height: 40px;
+width: 40px;
+padding: 0;
+border-radius: 50%;
+background: #FFFFFF;
+border: 1px solid #000000;
+overflow: hidden;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode #logoutButton,
+.dark-mode #signupButton {
+background-color: var(--dark-element-bg);
+border: 1px solid var(--dark-border);
+box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+#editButton {
+transition: all 0.3s ease;
+height: 40px;
+padding: 0px 8px;
+border-radius: 6px;
+background: #FFFFFF;
+border: 1px solid #000000;
+color: #000000;
+font-size: 14px;
+font-weight: bold;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 8px;
+box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+}
+
+.dark-mode #editButton {
+background-color: var(--dark-element-bg);
+border: 1px solid var(--dark-border);
+color: #FFFFFF;
+box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+
+#logoutButton {
+background: transparent;
+border: none;
+padding: 8px 12px;
+border-radius: 8px;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+
+#logoutButton:hover {
+background-color: rgba(0, 138, 203, 0.1);
+}
+
+#logoutButton img {
+opacity: 0.8;
+transition: opacity 0.3s ease;
+}
+
+#logoutButton:hover img {
+opacity: 1;
+}
+
+.vlc {
+margin-left: 0; /* Remove the old margin */
+}
+
+.hidden2 {
+    display: none !important;
+  }
+
+  #advancedOptionsButton {
+    background-color: transparent;
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    padding: 10px; /* Adjust if needed for spacing */
+    margin-top: 10px;
+    margin-left: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #advancedOptionsButton:hover {
+  color: #008acb;
+}
+  /* .response-box {
+    position: relative;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 18px;
+    margin-bottom: 10px;
+    border: 2px solid #008acb;
+    box-shadow: 0 0 10px #008acb, 0 0 20px #008acb;
+    animation: glowingBorder 2s ease-in-out infinite alternate;
+  } */
+  @keyframes glowingBorder {
+    from {
+      box-shadow: 0 0 10px #008acb, 0 0 20px #008acb;
+    }
+    to {
+      box-shadow: 0 0 20px #008acb, 0 0 20px #008acb, 0 0 20px #008acb;
+    }
+  }
+
+  .response-text {
+    margin-right: 70px; /* Make space for the button */
+  }
+  .scrollable-container {
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    overflow-y: hidden;
+    flex-grow: 1;
+    position: relative;
+    z-index: 0;
+    /* padding-bottom: 70px; Prevent content from being hidden behind the button */
+  }
+  #categories-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    justify-items: center;
+    position: relative;
+z-index: 1;
+  }
+  #categories-container::-webkit-scrollbar {
+    height: 20px;
+  }
+  #categories-container::-webkit-scrollbar-track {
+    background: #222;
+  }
+  #categories-container::-webkit-scrollbar-thumb {
+    background-color: #008acb;
+    border-radius: 4px;
+  }
+  .title1 {
+    background-color: transparent !important; /* Change from dark blue to white */
+    color: #000000;
+height: 60px;
+display: flex;
+justify-content: space-between; /* This spreads items to edges */
+align-items: center;
+margin-top: 1%;
+font-weight: lighter;
+font-size: large;
+padding: 10px 15px; /* Add padding on both sides */
+width: 100%; /* Ensure full width */
+}
+.title1 > div:last-child {
+display: flex;
+align-items: center;
+gap: 10px; /* Space between buttons */
+margin-right: 1px; /* Add some right margin */
+}
+
+
+  .title{
+height: 40px;
+display: flex;
+background-color: transparent;
+justify-content: center;
+font-weight: bold;
+align-items: center;
+font-size: 12px;
+color: #292929;
+/* font-family: 'Inter'; */
+
+  }
+  .radio-group {
+    display: flex;
+    gap: 8px;
+    padding: 1px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2%;
+  }
+  .radio-button {
+    position: relative;
+    display: inline-block;
+    width: 80px !important;
+    height: 90px !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  .radio-button input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .radio-button label {
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px !important;  /* Force consistent width with !important */
+    height: 90px !important; /* Force consistent height with !important */
+    font-size: 12px;
+    border-radius: 8px;
+    border: none !important; /* Explicitly remove any border */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    gap: 8px;
+    padding: 12px 8px;
+    box-shadow: none; /* Remove any box shadow by default */
+  }
+
+
+
+  .radio-button input[type="radio"]:checked + label {
+    background-color: rgba(0, 153, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
+    transform: translateY(2px);
+    transition: all 0.15s ease;
+  }
+
+  .radio-button input[type="radio"]:hover + label {
+    background-color: rgba(0, 153, 255, 0.05);
+    box-shadow: 0 0 8px rgba(0, 153, 255, 0.3);
+  }
+
+  .radio-button label:active {
+    transform: translateY(2px);
+    transition: all 0.15s ease;
+  }
+
+
+  .button-group {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.button-group input[type="radio"] {
+display: none;
+}
+
+.button-group label {
+display: flex;
+border-radius: 8px;
+justify-content: flex-start;
+align-items: center;
+cursor: pointer;
+transition: background-color 0.2s;
+}
+
+.dot {
+width: 8px;
+height: 8px;
+border-radius: 0;
+background-color: #E5E7EB;
+transition: background-color 0.2s;
+}
+
+.button-text {
+font-family: sans-serif;
+font-size: 12px;
+color: #000000;
+}
+
+  .dropdowns-container {
+    display: flex;
+    gap: 12px; /* Consistent gap between buttons */
+    justify-content: center; /* Center the buttons */
+    margin: 0 auto; /* Remove left margin */
+    padding: 0 10px; /* Add some padding for spacing from edges */
+  }
+
+  /* .radio-button label::after {
+        content: '>';
+        margin-left: 5px;
+    } */
+  /* Removed duplicate scrollbar styling */
+  .category-card {
+    background: rgba(0, 0, 0, 0.4);
+border: 1px solid #444444;
+border-radius: 16px;
+padding: 10px;
+width: 270px;
+text-align: center;
+display: flex;
+position: relative; /* Add this */
+z-index: 0; /* Add this */
+flex-direction: column;
+  }
+  .radio-button label img {
+    width: 42px;
+    height: 42px;
+    padding: 0; /* Remove any padding on the image itself */
+  }
+
+.dark-mode .radio-button label {
+  color: #FFFFFF;
+  width: 80px !important; /* Force same width in dark mode */
+  height: 90px !important; /* Force same height in dark mode */
+  background-color: #000000;
+  border: none !important; /* Explicitly remove any border */
+  box-shadow: none; /* Remove any box shadow by default */
+}
+
+
+
+/* Optional: Hover state in dark mode */
+/* .dark-mode .radio-button:hover label img {
+filter: brightness(0.9) invert(1);
+} */
+
+/* Selected state in dark mode */
+.dark-mode .radio-button input[type="radio"]:checked + label {
+  background-color: rgba(0, 112, 186, 0.596);
+  box-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
+  transform: translateY(3px 3px);
+}
+
+.dark-mode .radio-button input[type="radio"]:checked + label img {
+  filter: brightness(1) invert(1);
+}
+
+.dark-mode .radio-button input[type="radio"]:hover + label {
+  background-color: rgba(0, 153, 255, 0.1);
+  box-shadow: 0 0 8px rgba(0, 153, 255, 0.3);
+}
+
+.dark-mode .radio-button label:active {
+  transform: translateY(2px);
+}
+  .radio-button label span {
+    text-align: center;
+  }
+  .dropdown-button-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .category-title {
+    color: #757575;
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding: 0px 10px;
+  }
+  .dropdown1 {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0;
+  }
+  .dropdown {
+    position: relative;
+    flex: 1 1 auto; /* Allow buttons to grow equally */
+    max-width: 120px;
+    z-index: 0;
+  }
+  /* .dropdown:hover{
+    display: block;
+  } */
+  .dropdown-button {
+    background-color: #000000;
+border: 1px solid #757575;
+border-radius: 30px;
+padding: 8px 16px;
+font-size: 12px;
+cursor: pointer;
+color: #ffffff;
+width: 100%; /* Make button take full width of dropdown container */
+text-align: center; /* Center text */
+position: relative; /* Add this */
+z-index: 0; /* Add this */
+  }
+  .dropdown-button-container{
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+  .dropdown-item:hover {
+    background-color: #444;
+  }
+  .dropdown-item.selected {
+    background-color: #008acb;
+  }
+  .dropdown-button-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .dropdown-item-image {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .dropdown-button-image img,
+  .dropdown-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+    background: #333;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    cursor: pointer;
+    text-align: left;
+  }
+  .dropdownicon {
+    width: 13px;
+    height: 13px;
+    margin-right: 7px;
+  }
+  .dropdown-button-name,
+  .dropdown-item-name {
+    flex-grow: 1;
+  }
+  .dropdown-content {
+    display: none;
+        position: absolute;
+        background-color: #000000;
+        border: 1px solid #333;
+        color: #ffffff;
+        min-width: 100%;
+        top: 45px;
+        border-radius: 8px;
+        /* margin-top: 10px; */
+        z-index: 1;
+        width: 250px;
+        overflow-x: scroll;
+        transform: translateZ(0);
+  }
+  .dropdown-card-select {
+    background: none;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        color: #000;
+  }
+  .dropdown-horizontal-container {
+    display: inline-flex; /* Use inline-flex for horizontal alignment */
+    gap: 10px; /* Add some space between cards */
+    margin: 5px;
+  }
+
+  .needs {
+font-family: 'Amenti';
+display: flex;
+justify-content: center;
+padding-top: 3%;
+font-size: 8px;
+color: #000000;
+
+  }
+
+  .dropdown-card.selected button{
+    border-color: #008acb;
+    background-color: #008acb;
+    border-radius: 7px;
+  }
+  .dropdown-card-name {
+    font-size: 12px;
+    text-align: left;
+    margin-right: 5px;
+    flex-grow: 1;
+    white-space: normal;
+    word-break: break-word;
+  }
+  .dropdown-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .dropdown-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+  }
+  .dropdown-card-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 6%;
+    overflow: hidden;
+    margin-bottom: 1px;
+  }
+  .dropdown-card {
+    margin: 5px 0;
+  }
+  #dropdownMenu {
+    width: 175px;
+    z-index: 1;
+    margin-right: 15px;
+    border-radius: 16px; /* Curve the corners */
+    background-color: black;
+  }
+  #dropdownMenu hr {
+    border-color: #444; /* Set the border color to gray */
+  }
+  #editDropdownMenu {
+    width: 175px; /* Width of the dropdown */
+    margin-right: 25px;
+    margin-top: 232px;
+    position: absolute;
+    right: 100;
+    z-index: 0;
+    border-radius: 16px; /* Curve the corners */
+    background-color: black; /* Ensure background is visible */
+    overflow: hidden; /* Prevent overflow */
+  }
+  #editDropdownMenu hr {
+    border-color: #444; /* Set the border color to gray */
+    margin: 0; /* Remove default margins for better spacing */
+    height: 1px; /* Set a height for the hr element */
+    background-color: #444; /* Background color for better visibility */
+  }
+  /* Adjust the scrollbar for horizontal scrolling */
+  .dropdown-content::-webkit-scrollbar {
+    height: 8px; /* Change from width to height for horizontal scrollbar */
+  }
+  .dropdown-content::-webkit-scrollbar-track {
+    background: #222;
+  }
+  .dropdown-content::-webkit-scrollbar-thumb {
+    background-color: #008acb;
+  }
+  .dropdown-content button {
+    color: white;
+    padding: 8px 16px;
+    background: #000000;
+    border: 1px solid #444;
+    border-radius: 7px;
+    cursor: pointer;
+    width: 100px;
+  }
+  .dropdown-content button:hover {
+    box-shadow: 0 0 10px #008acb;
+  }
+
+  /* INPUT BOX - Container for the prompt input */
+.input-container {
+    padding: 0 24px;
+}
+
+/* INPUT BOX - Main prompt input textarea */
+.prompt-input {
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+  color: #000000;
+  border-radius: 6px;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  min-height: 100px;
+  resize: none;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+/* INPUT BOX - Focus state */
+.prompt-input:focus {
+    outline: none;
+    border-color: #000000;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* INPUT BOX - Placeholder text */
+.prompt-input::placeholder {
+    color: #9CA3AF;
+    font-size: 14px;
+}
+  .icon {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+  .icon-button {
+    display: flex;
+    font-family: sans-serif;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Align items to the start (left) */
+    background-color: #00aeff; /* Use your desired background color */
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 10px 20px; /* Adjust padding if needed */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px; /* Ensure text size is not too large */
+  }
+  .runningout{
+    color: rgba(255,255,255, 0.8);
+    font-style: italic;
+    padding-top: 5px;
+  }
+  .button-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+  }
+  .icon:hover {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+  }
+  .fixed-bottom {
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    padding: 0 10px; /* Add horizontal padding */
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .responses-section {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 24px;
+}
+
+.response-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensures text and button are on opposite ends */
+  padding: 10px;
+  border: 1px solid #ccc; /* Optional: for visual separation */
+  border-radius: 5px;
+  background: white;
+  width: 100%;
+  height: 100%;
+}
+
+.response-text {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-height: 250px; /* Limit height to fit all responses */
+  box-orient: vertical;
+}
+
+.responses-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.response-content {
+  white-space: normal;
+  max-height: 250px; /* Limit height to fit all responses */
+  box-orient: vertical;
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.response-content::-webkit-scrollbar {
+  display: none;
+}
+
+.responses-grid::-webkit-scrollbar {
+width: 6px;
+}
+
+.responses-grid::-webkit-scrollbar-track {
+background: #F5F5F5;
+border-radius: 3px;
+}
+
+.responses-grid::-webkit-scrollbar-track {
+background: #F5F5F5;
+border-radius: 3px;
+}
+
+.responses-grid::-webkit-scrollbar-thumb {
+background: #008ACB;
+border-radius: 3px;
+}
+
+.dark-mode .responses-grid::-webkit-scrollbar-track {
+background: #1F2937;
+}
+
+/* Custom scrollbar styling to match your existing design */
+.responses-grid::-webkit-scrollbar {
+width: 6px;
+}
+
+.responses-grid::-webkit-scrollbar-track {
+background: #F5F5F5;
+border-radius: 3px;
+}
+
+.responses-grid::-webkit-scrollbar-thumb {
+background: #008ACB;
+border-radius: 3px;
+}
+
+/* Dark mode scrollbar */
+.dark-mode .responses-grid::-webkit-scrollbar-track {
+background: #1F2937;
+}
+
+.response-card {
+background-color: #FFFFFF;
+border: 1px solid #000000;
+border-radius: 16px;
+padding: 8px;
+margin: 24px;
+display: flex;
+flex-direction: column;
+align-items: stretch;
+justify-content: space-between;
+animation: slideIn 0.3s ease-out;
+overflow: hidden;
+}
+
+@keyframes slideIn {
+from {
+opacity: 0;
+transform: translateY(20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.dark-mode .response-card {
+background: #1f1f1f;
+border-color: #374151;
+}
+
+.open-in-text {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.dark-mode .open-in-text {
+  color: #9ca3af;
+}
+
+.platform-name {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.platform-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.dark-mode .platform-name {
+  border: 1px solid black;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid #0e0e0e;
+  cursor: pointer;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8);
+  transition: all 0.2s ease;
+}
+
+.dark-mode .action-button {
+  background-color: #171717;
+  border-color: #000000;
+}
+
+.action-button:hover {
+  background-color: #f3f4f6;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.dark-mode .action-button:hover {
+  background-color: #202020fd;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.action-button img {
+  width: 24px;
+  height: 24px;
+}
+
+.Insert-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  width: 132px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: 1px solid #0e0e0e;
+  cursor: pointer;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8);
+  transition: all 0.2s ease;
+}
+
+.dark-mode .Insert-button {
+  background-color: #171717;
+  border-color: #000000;
+}
+
+.Insert-button:hover {
+  background-color: #f3f4f6;
+}
+
+.dark-mode .Insert-button:hover {
+  background-color: #202020fd;
+}
+
+.Insert-button img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Update response card styles */
+.response-card {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.response-content {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #1f2937;
+  white-space: pre-wrap;
+}
+
+.dark-mode .response-content {
+  color: #e5e7eb;
+}
+
+.copy-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .copy-button {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #9ca3af;
+}
+
+.copy-button:hover {
+  background-color: #e5e7eb;
+}
+
+.dark-mode .copy-button:hover {
+  background-color: #4b5563;
+}
+
+.responses-wrapper {
+  position: relative;
+  height: 100%;
+  padding-bottom: 65px; /* Make room for bottom bar */
+}
+
+.responses-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.dark-mode .responses-header {
+  border-color: #374151;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: #4b5563;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dark-mode .back-button {
+  color: #9ca3af;
+}
+
+.back-button:hover {
+  color: #1f2937;
+}
+
+.dark-mode .back-button:hover {
+  color: #e5e7eb;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  --tooltip-bg: #d9d9d9;
+  --tooltip-text: rgb(0, 0, 0);
+  --button-bg: #007bff;
+  --button-hover-bg: #0056b3;
+  --skip-button-color: rgba(224, 224, 224, 0.7);
+  --skip-button-hover-color: rgba(255, 255, 255, 1);
+  --progress-bg: #969696de;
+  --dark-bg: #152a31;
+  --dark-element-bg: #1f1f1f;
+  --dark-border: #2A3A45;
+  background: #152a31 !important;
+  color: #FFFFFF !important;
+}
+
+#sendButton {
+  background-color: #00c8ed;
+  color: #000000;
+  border: 1px solid black;
+  border-radius: 9999px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: auto;
+  min-width: 144px;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 0;
+}
+
+#sendButton:hover {
+  background-color: #00daff;
+}
+
+/* Button press animation */
+#sendButton:active {
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
+  top: 2px;
+  left: 2px;
+}
+
+
+.response-loading {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 16px;
+z-index: 10;
+}
+
+.loading-spinner {
+width: 40px;
+height: 40px;
+border: 3px solid #f3f3f3;
+border-top: 3px solid #0284C7;
+border-radius: 50%;
+animation: spin 1s linear infinite;
+}
+
+#generateButtonContainer {
+width: 100%;
+padding: 0 24px;
+margin-top: 0px;
+margin-bottom: 24px;
+}
+
+
+  #response {
+    white-space: pre-wrap;
+    margin-bottom: 5px;
+    font-size: 14px;
+    background: rgba(0, 0, 0, 0.4);
+    /* padding: 10px; */
+    border-radius: 10px;
+  }
+  .prompt-text {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+
+  /* .copy-button {
+  background-color: #008ACB;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+} */
+/* .responses-wrapper {
+position: fixed;
+top: 50px;
+left: 0;
+right: 0;
+bottom: 0;
+background: #FFFFFF;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+z-index: 1000;
+overflow-y: auto;
+} */
+
+
+.responses-wrapper {
+position: relative;
+width: 450px !important;
+max-width: 450px !important;
+height: 100%; /* Fixed height */
+overflow: hidden;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+
+.responses-wrapper.visible {
+opacity: 1;
+visibility: visible;
+display: block !important;
+}
+
+.dark-mode .responses-wrapper {
+background: #152a31;
+}
+
+.responses-header {
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 15px 20px 0px 20px;
+}
+
+.responses-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333333;
+}
+
+/* Styling for the Enhancing... text */
+.responses-header h2:only-child {
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333333;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.dark-mode .responses-header h2 {
+  color: #f1f1f1;
+}
+
+.back-button {
+display: flex;
+align-items: center;
+gap: 8px;
+background: transparent;
+border: none;
+color: #0284C7;
+cursor: pointer;
+font-size: 14px;
+}
+
+.responses-scroll-container {
+width: 100%;
+overflow-x: auto;
+scrollbar-width: thin;
+scrollbar-color: #008ACB #F5F5F5;
+}
+
+.responses-scroll-container::-webkit-scrollbar {
+height: 6px;
+}
+
+.responses-scroll-container::-webkit-scrollbar-track {
+background: #F5F5F5;
+border-radius: 3px;
+}
+
+.responses-scroll-container::-webkit-scrollbar-thumb {
+background: #008ACB;
+border-radius: 3px;
+}
+
+.responses-track {
+display: flex;
+gap: 16px;
+padding: 4px 0;
+}
+
+.response-item {
+flex: 0 0 auto;
+width: 400px;
+margin: 20px;
+background: #F5F5F5;
+border: 1px solid #000000;
+box-shadow: 2px 2px 1px #000000;
+border-radius: 16px;
+padding: 16px;
+}
+
+.response-content {
+font-size: 14px;
+line-height: 1.6;
+flex-grow: 1;
+color: #374151;
+}
+
+.copy-button {
+    position: relative; /* Ensure proper alignment inside the container */
+    margin-left: auto; /* Push button to the right */
+    padding: 10px 18px;
+    border: none;
+    cursor: pointer;
+    background: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border-radius: 5px; /* Rounded corners for the button */
+}
+
+.copy-button:hover {
+    background-color: #0369a1;
+}
+
+.copy-button .copy-icon {
+display: none;
+}
+.dark-mode .copy-button {
+background: #1F2937;
+border-color: #374151;
+}
+
+.dark-mode .copy-button:hover {
+background: #374151;
+}
+
+.copy-button.copied {
+background: #0284C7;
+color: #FFFFFF;
+border-color: #0284C7;
+}
+
+/* Dark mode styles */
+.dark-mode .response-item {
+background: rgba(0, 0, 0, 0.4);
+border-color: #374151;
+}
+
+.dark-mode .response-content {
+color: #FFFFFF;
+}
+
+.dark-mode .responses-scroll-container::-webkit-scrollbar-track {
+background: #1F2937;
+}
+  .image-upload-container {
+    position: relative; /* or absolute if positioning relative to a parent */
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 16px auto 0;
+    margin-top: 16px;
+    width: 95%;
+  }
+  .image-upload-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .image-upload-title {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .image-upload-info {
+    cursor: pointer;
+    font-size: 18px;
+    color: #888;
+  }
+  .image-upload-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px dashed #666;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .image-upload-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .image-upload-icon {
+    margin-right: 10px;
+  }
+  .image-upload-text {
+    font-size: 14px;
+    color: #ccc;
+  }
+  .dropdown-button span,
+  .dropdown-item-name {
+    flex-grow: 1;
+  }
+  #imageUpload {
+    display: none;
+  }
+
+  .extension-button {
+position: absolute !important;
+bottom: 5px !important;
+right: 5px !important;
+padding: 5px 10px !important;
+background: linear-gradient(180deg, #000000 0%, #008ACB 100%) !important;
+color: white !important;
+border: 1px solid #444444 !important;
+border-radius: 5px !important;
+cursor: pointer !important;
+z-index: 999999 !important;
+display: none !important;
+font-size: 12px !important;
+transition: all 0.3s ease !important;
+}
+
+.extension-button.enabled {
+display: block !important;
+}
+
+.extension-button:hover {
+box-shadow: 0 0 10px #008ACB !important;
+}
+
+.enhance-popover {
+position: absolute !important;
+/* bottom: 40px !important; */
+/* right: 5px !important; */
+background: rgba(0, 0, 0, 0.95) !important;
+border: 1px solid #444444 !important;
+/* border-radius: 8px !important; */
+padding: 12px !important;
+color: white !important;
+z-index: 999999 !important;
+min-width: 200px !important;
+max-width: 300px !important;
+}
+
+.enhance-actions {
+display: flex !important;
+gap: 10px !important;
+margin-top: 10px !important;
+}
+
+.enhance-actions button {
+flex: 1 !important;
+padding: 5px 10px !important;
+background: linear-gradient(180deg, #000000 0%, #008ACB 100%) !important;
+border: 1px solid #444444 !important;
+/* border-radius: 5px !important; */
+color: white !important;
+cursor: pointer !important;
+font-size: 12px !important;
+transition: all 0.3s ease !important;
+}
+
+.enhance-actions button:hover {
+box-shadow: 0 0 10px #008ACB !important;
+}
+
+.enhance-controls {
+
+background: rgba(0, 0, 0, 0.4);
+transition: all 0.3s ease;
+}
+
+.enhance-controls:hover {
+border-color: #008ACB;
+box-shadow: 0 0 10px rgba(0, 138, 203, 0.1);
+}
+
+/* Use the same styling as your existing buttons */
+.enhance-controls .style-button {
+display: flex;
+border: 1.5px solid #353535;
+justify-content: flex-start;
+align-items: center;
+gap: 8px;
+/* padding: 8px 16px; */
+background-color: transparent;
+/* border-radius: 9999px; */
+cursor: pointer;
+transition: background-color 0.2s;
+}
+
+.enhance-controls .style-button:hover {
+background-color: #000000;
+}
+
+  .input-container {
+    /* position: relative; */
+           width: 100%;
+           margin-top: 0%;
+           padding-left: 4%;
+           padding-right: 4%;
+
+    /* padding-top: 50px; */
+    /* padding: 10% 0% 0% 10%; */
+
+
+  }
+  /* .vlc {
+    margin-left: 150px;
+  } */
+  #signupButton {
+font-style: italic;
+background: linear-gradient(to bottom, #008ACB4D, #6ACFFF4D);
+border: 1px solid #008ACB;
+margin: 0px;
+/* Remove position absolute */
+}
+
+.mleft {
+display: flex;
+align-items: center;
+gap: 8px; /* Space between icon and text */
+}
+
+/* Ensure the toggle button aligns properly with other buttons */
+.mleft .small-toggle {
+display: flex;
+align-items: center;
+margin-left: 4px;
+}
+
+.credits-display {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 4px;
+margin-top: 8px;
+font-size: 12px;
+color: #6B7280;
+}
+
+.dark-mode .credits-display {
+color: #9CA3AF;
+}
+
+.credits-display span {
+display: inline-flex;
+align-items: center;
+}
+
+.credits-display img {
+width: 16px;
+height: 16px;
+}
+
+.mleft img {
+height: 20px;
+}
+
+.profileicon {
+height: 40px;
+width: 40px;
+object-fit: cover;
+border-radius: 50%;
+}
+.coinicon {
+  height: 25px;
+  width: 25px;
+  margin-right: 6px;
+}
+
+#editDropdownMenu {
+width: 175px;
+margin-right: 25px;
+margin-top: 232px;
+position: absolute;
+right: 100;
+z-index: 1;
+border-radius: 16px;
+background-color: black;
+overflow: hidden;
+}
+#editButton {
+font-style: italic;
+border: 1px solid #000000;
+margin: 0px;
+/* Remove position relative and left */
+}
+
+#editButton:hover {
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.premium-enhance-wrapper {
+display: flex;
+justify-content: center;
+margin: 20px auto;
+position: relative;
+}
+
+.premium-enhance-control {
+position: relative;
+width: auto;
+min-width: 300px;
+background: linear-gradient(145deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.1));
+border-radius: 12px;
+padding: 2px;
+overflow: hidden;
+}
+
+.premium-enhance-control::before {
+content: '';
+position: absolute;
+top: -2px;
+left: -2px;
+right: -2px;
+bottom: -2px;
+background: linear-gradient(90deg, #fbbf24, #f59e0b, #fbbf24);
+border-radius: 14px;
+z-index: -1;
+animation: borderShine 3s linear infinite;
+background-size: 200% 100%;
+}
+
+.premium-enhance-content {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 12px 20px;
+background: rgba(0, 0, 0, 0.7);
+border-radius: 10px;
+backdrop-filter: blur(5px);
+}
+
+.premium-enhance-text {
+color: #fbbf24;
+font-size: 14px;
+font-weight: 500;
+margin-right: 24px;
+}
+
+.tog {
+color: #000000;
+font-size: 9px;
+font-weight: bold;
+
+}
+
+.premium-toggle {
+position: relative;
+display: inline-block;
+width: 52px;
+height: 28px;
+}
+
+.toggle-input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+.toggle-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(251, 191, 36, 0.2);
+transition: 0.4s;
+border-radius: 34px;
+}
+
+
+.dark-mode .title1 {
+background-color: var(--dark-bg) !important;
+color: #FFFFFF;
+/* Removed border-bottom to match the image */
+}
+
+.dark-mode .title {
+color: #C9C9C9;
+}
+
+/* INPUT BOX - Dark mode styles */
+.dark-mode .prompt-input {
+background-color: var(--dark-element-bg); /* Dark background from image */
+border: 1px solid black;
+color: #FFFFFF;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* INPUT BOX - Dark mode focus state */
+.dark-mode .prompt-input:focus {
+border-color: #00c8ed;
+box-shadow: 0 0 0 2px rgba(0, 200, 237, 0.3);
+}
+
+/* INPUT BOX - Dark mode placeholder text */
+.dark-mode .prompt-input::placeholder {
+color: #8B9CAA;
+}
+
+/* Dark mode tone label and icon styles are handled in other rules */
+
+.dark-mode .tone-title {
+color: #FFFFFF !important;
+}
+
+.dark-mode .tone-description {
+color: #9CA3AF;
+}
+
+.dark-mode .button-text {
+color: #FFFFFF;
+}
+
+.dark-mode .needs {
+color: #FFFFFF !important;
+}
+
+.dark-mode .response-container {
+background-color: rgba(0, 0, 0, 0.4);
+border-color: #374151;
+}
+
+.dark-mode .response-text {
+color: #FFFFFF;
+}
+
+.dark-mode .mode-icon {
+filter: brightness(0) invert(1); /* Make moon icon white in dark mode */
+}
+
+.dark-mode .credits-display {
+color: #9CA3AF;
+}
+
+.dark-mode .enhance-toggle-small {
+background: #212121;
+}
+
+.dark-mode .small-toggle {
+background-color: #00000000;
+}
+
+
+.dark-mode .tog {
+color: #F5F5F5;
+
+}
+
+/* Dark mode hover states */
+.dark-mode .tone-label:hover {
+  border-color: #0285c76e;
+  background-color: #082f4949;
+}
+
+.dark-mode .tone-option input[type="radio"]:checked + .tone-label {
+  border-color: #0285c76e;
+  background-color: #082f4949;
+}
+
+.dark-mode .button-group label:hover {
+background-color: #333333;
+}
+
+.dark-mode-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dark-mode-btn:active {
+  transform: scale(0.9);
+  animation: buttonPress 0.3s ease;
+}
+
+.dark-mode-btn.clicked {
+  transform: scale(0.9);
+}
+
+.dark-mode-btn img {
+  width: 22px;
+  height: 22px;
+  transition: all 0.3s ease;
+}
+
+.dark-mode-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .dark-mode-btn {
+  background-color: transparent;
+}
+
+.mode-icon {
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease;
+}
+
+.dark-mode-btn:hover .mode-icon {
+  transform: scale(1.1);
+}
+
+.small-toggle {
+position: relative;
+display: inline-block;
+width: 80px;
+height: 40px;
+transition: all 0.15s ease;
+}
+
+.small-toggle:hover .toggle-slider-small {
+box-shadow: none !important;
+transform: translate(2px, 2px);
+}
+
+.toggle-slider-small {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #55555596;
+transition: 0.4s;
+border-radius: 20px;
+border: 1px solid #000000;
+box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+overflow: hidden;
+}
+
+.dark-mode .toggle-slider-small {
+background-color: #333333;
+border: 1px solid #000000;
+box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+.toggle-slider-small:before {
+position: absolute;
+content: "";
+height: 31px;
+width: 32px;
+left: 4px;
+bottom: 4px;
+transition: all 0.4s;
+border-radius: 50%;
+background-image: url('./assets/velocity_off.png');
+background-size: 100%;
+background-position: center;
+background-repeat: no-repeat;
+z-index: 2;
+}
+
+/* Change image when toggle is ON */
+.toggle-input:checked + .toggle-slider-small:before {
+background-image: url('./assets/Velocity.png');
+}
+
+/* Add rotation animations */
+@keyframes rotateToggleOn {
+  0% { transform: translateX(0) rotate(0deg); }
+  100% { transform: translateX(38px) rotate(360deg); }
+}
+
+@keyframes rotateToggleOff {
+  0% { transform: translateX(40px) rotate(0deg); }
+  100% { transform: translateX(0) rotate(-360deg); }
+}
+
+.toggle-input:checked + .toggle-slider-small {
+background-color: #dbf0f5;
+}
+
+/* Add highlight for ON state */
+.toggle-input:checked + .toggle-slider-small:after {
+font-weight: bold;
+}
+
+/* Position for OFF state */
+.toggle-slider-small:before {
+transform: translateX(0);
+}
+
+/* Position and animation for ON state */
+.toggle-input:checked + .toggle-slider-small:before {
+transform: translateX(40px);
+animation: rotateToggleOn 0.4s ease;
+}
+
+/* Add animation class for toggle off */
+.toggle-animation-off:before {
+animation: rotateToggleOff 0.4s ease;
+}
+
+/* Adding ON/OFF text */
+.toggle-slider-small:after {
+position: absolute;
+content: "OFF";
+color: #FFFFFF;
+font-size: 12px;
+font-weight: bold;
+right: 12px;
+top: 11px;
+}
+
+.toggle-input:checked + .toggle-slider-small:after {
+content: "ON";
+color: #000000;
+left: 12px;
+right: auto;
+}
+
+.dark-mode .toggle-input:checked + .toggle-slider-small:after {
+  content: "ON";
+  color: #ffffff;
+  left: 12px;
+  right: auto;
+}
+
+/* Dark mode styling */
+.dark-mode .toggle-slider-small {
+background-color: #222222;
+border-color: #000000;
+}
+
+.dark-mode .toggle-input:checked + .toggle-slider-small {
+background-color: #222222;
+}
+
+.dark-mode .toggle-slider-small:before {
+background-image: url('./assets/velocity_off.png');
+}
+
+.dark-mode .toggle-input:checked + .toggle-slider-small:before {
+background-image: url('./assets/Velocity.png');
+}
+
+.dark-mode .toggle-slider-small:after {
+color: #FFFFFF;
+}
+
+/* Login Status Indicator Styles */
+.login-status-indicator {
+  height: 40px;
+  padding: 0 15px;
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  min-width: 70px;
+}
+
+.login-status-indicator:hover {
+  background-color: #f5f5f5;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.login-status-indicator:active {
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.status-text {
+  display: inline-block;
+}
+
+/* Free trial status */
+.login-status-indicator.free-trial {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+/* Logged out status */
+.login-status-indicator.logged-out {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+/* Login status indicator with blue background */
+.login-status-indicator.blue {
+  background-color: #d9f4ff;
+  color: #000000;
+}
+
+/* Dark mode styles for login status indicator */
+.dark-mode .login-status-indicator {
+  background-color: #1f1f1f;
+  border: 1px solid #2A3A45;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+  color: #FFFFFF;
+}
+
+.dark-mode .login-status-indicator:hover {
+  background-color: #2a2a2a;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.dark-mode .login-status-indicator.blue {
+  background-color: #0284C7;
+  color: #FFFFFF;
+}
+
+/* Free trial counter styling for edit button */
+#editButton.free-trial-counter {
+  background-color: #d9f4ff;
+  color: #000000;
+  border: 1px solid #000000;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+  transition: all 0.15s ease;
+}
+
+#editButton.free-trial-counter:hover {
+  background-color: #c0ebfa;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.dark-mode #editButton.free-trial-counter {
+  background-color: #0284C7;
+  color: #FFFFFF;
+  border: 1px solid #0284C7;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode #editButton.free-trial-counter:hover {
+  background-color: #0369a1;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+/* Shake animation for error states */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.shake-animation {
+  animation: shake 0.5s;
+}
+
+.generate-button {
+background-color: #00c8ed;
+color: #000000;
+border: 1px solid black;
+border-radius: 9999px;
+padding: 12px 24px;
+font-size: 14px;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.15s ease;
+width: auto;
+min-width: 140px;
+box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+position: relative;
+top: 0;
+left: 0;
+}
+
+.generate-button:hover {
+  background-color: #00daff;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+
+/* Dark mode styling for generate button - keep the same cyan color */
+.dark-mode .generate-button {
+background-color: #00c8ed;
+color: #000000;
+border: 1px solid #000000;
+box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+}
+
+/* Removed duplicate rule */
+
+.enhance-toggle-small {
+background: rgba(0, 0, 0, 0);
+background-color: #F5F5F5;
+padding: 8px 8px;
+border-radius: 12px;
+transition: all 0.3s ease;
+}
+
+
+
+.toggle-slider:before {
+position: absolute;
+content: "";
+height: 20px;
+width: 20px;
+left: 4px;
+bottom: 4px;
+background-color: #fbbf24;
+transition: 0.4s;
+border-radius: 50%;
+}
+.button-group label.selected {
+background-color: rgba(0, 116, 169, 0.1);
+border-color: #008ACB;
+}
+.button-group label.selected .dot {
+background-color: #008ACB;
+}
+
+.toggle-input:checked + .toggle-slider {
+background-color: rgba(245, 158, 11, 0.6);
+}
+
+.toggle-input:checked + .toggle-slider:before {
+transform: translateX(24px);
+}
+
+.copy-icon {
+width: 16px;
+height: 16px;
+transition: all 0.2s ease;
+}
+
+.copied .copy-icon {
+filter: brightness(0) invert(1);
+}
+
+/* Add animation for the icon */
+.copy-icon.white {
+filter: none; /* Makes the icon white */
+transition: filter 0.3s ease;   /* Smooth transition */
+animation: revertColor 2s forwards; /* Animation to revert back */
+}
+
+@keyframes revertColor {
+0% {
+    filter: brightness(0) invert(1);
+}
+100% {
+    filter: none; /* Reverts to original color */
+}
+}
+
+@keyframes borderShine {
+0% { background-position: 200% 0; }
+100% { background-position: -200% 0; }
+}
+
+  #deleteButton {
+    height: auto; /* Set height to auto for content-based height */
+    margin-right: 15px; /* Space between buttons */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: linear-gradient(to bottom, #008ACB4D, #008ACB4D);
+    border: 1px solid #008ACB;
+    font-style: italic;
+    font-weight: 600;
+    border-radius: 25px; /* Makes the button pill-shaped */
+    padding: 2px 8px; /* Decrease padding for reduced height */
+    color: white; /* Text color */
+    font-size: 14px; /* Reduce font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+  }
+  #editButton1 {
+/* Set height to auto for content-based height */
+    margin-top: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #000000;
+    border-radius: 5px; /* Makes the button pill-shaped */
+    padding: 13px 16px; /* Decrease padding for reduced height */
+    color: white; /* Text color */
+    font-size: 12px; /* Reduce font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth background transition */
+  }
+  #editButton:hover, #editButton1:hover {
+    box-shadow: 2px 2px 2px #000000; /* Darker shade on hover for edit button */
+  }
+  #signupButton:hover {
+box-shadow: 0 0 10px #008ACB;
+}
+
+#signupButton.not-logged-in:hover {
+cursor: pointer;
+opacity: 0.9;
+}
+  #deleteButton:hover, #signupButton:hover {
+    box-shadow: 0 0 10px #008ACB /* Darker shade on hover for delete button */
+  }
+
+  .needs {
+font-size: 16px;
+font-weight: bold;
+color: #292929 !important;
+text-align: center;
+}
+
+/* STYLE BUTTONS - Main container for the 2x2 grid of style buttons */
+.button-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 16px;
+}
+
+/* STYLE BUTTONS - Container for each individual style button */
+.tone-option {
+position: relative;
+}
+
+/* STYLE BUTTONS - Hide the actual radio input */
+.tone-option input[type="radio"] {
+position: absolute;
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+/* STYLE BUTTONS - The visible button label that users interact with */
+.tone-label {
+display: flex;
+flex-direction: column; /* Stack elements vertically */
+align-items: center; /* Center horizontally */
+background-color: #cdf6fd; /* Light blue background for light mode */
+border-radius: 8px; /* Add rounded corners */
+cursor: pointer;
+transition: all 0.3s ease;
+height: 100%; /* Fill the entire height */
+}
+
+/* STYLE BUTTONS - Top row with icon and title */
+.tone-header {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+padding: 10px;
+border: 1px solid #000000;
+border-radius: 8px;
+box-shadow: 2px 2px 1px #000000;
+}
+
+/* STYLE BUTTONS - Container for the icon */
+.tone-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 24px;
+height: 24px;
+background-color: transparent;
+flex-shrink: 0;
+margin-right: 8px;
+}
+
+/* STYLE BUTTONS - Style for the icon image */
+.tone-icon img {
+width: 16px;
+height: 16px;
+color: #000000;
+}
+
+/* STYLE BUTTONS - Style for the button title (Descriptive, Creative, etc.) */
+.tone-title {
+font-size: 14px;
+font-weight: 500;
+color: #000000 !important; /* Force black color */
+}
+
+/* STYLE BUTTONS - Style for the button description text */
+.tone-description {
+font-size: 12px;
+color: #6B7280;
+line-height: 1.4;
+text-align: left;
+}
+
+/* Notification styles */
+.velocity-notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  max-width: 80%;
+}
+
+.velocity-notification.info {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+  border: 1px solid #bbdefb;
+}
+
+.velocity-notification.warning {
+  background-color: #fff3e0;
+  color: #e65100;
+  border: 1px solid #ffe0b2;
+}
+
+.velocity-notification.error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
+}
+
+.dark-mode .velocity-notification.info {
+  background-color: #0d47a1;
+  color: #e3f2fd;
+  border: 1px solid #1565c0;
+}
+
+.dark-mode .velocity-notification.warning {
+  background-color: #e65100;
+  color: #fff3e0;
+  border: 1px solid #ef6c00;
+}
+
+.dark-mode .velocity-notification.error {
+  background-color: #c62828;
+  color: #ffebee;
+  border: 1px solid #d32f2f;
+}
+
+/* STYLE BUTTONS - Hover and Selected States */
+/* Hover state - when mouse is over the button */
+.tone-label:hover {
+border-color: #000000; /* Brighter blue border on hover */
+border-width: 1px; /* Thicker border on hover */
+}
+
+/* Selected state - when the radio button is checked */
+.tone-option input[type="radio"]:checked + .tone-label {
+border-color: #000000; /* Bright blue border when selected */
+border-width: 1px; /* Thicker border when selected */
+background-color: #59e6ff; /* Slightly darker blue when selected */
+}
+.dark-mode .model-name {
+color: #FFFFFF !important;  /* Text becomes white in dark mode */
+}
+
+.radio-button label img[alt="Gemini"] {
+width: 42px;
+height: 42px;
+padding: 0; /* Remove any padding on the image itself */
+}
+.radio-button label img[alt="Gamma"] {
+width: 45px;
+height: 40px;
+padding: 0;
+}
+
+.radio-button label img[alt="Claude"] {
+width: 45px;
+height: 40px;
+padding: 0;
+}
+
+/* Text color in dark mode */
+.dark-mode .radio-button label {
+color: #FFFFFF !important; /* Force white text in dark mode */
+}
+.dark-mode .gpt-icon {
+filter: brightness(0) invert(1) !important;
+}
+
+.dark-mode .midjourney-icon {
+filter: brightness(0) invert(1) !important;
+}
+.dark-mode .gpt-icon,
+.dark-mode .midjourney-icon {
+filter: brightness(0) invert(1);
+}
+/* Hover state in dark mode */
+.dark-mode .radio-button:hover .gpt-icon,
+.dark-mode .radio-button:hover .midjourney-icon {
+filter: brightness(0) invert(1);
+}
+
+/* Selected state in dark mode */
+.dark-mode .radio-button input[type="radio"]:checked + label .gpt-icon,
+.dark-mode .radio-button input[type="radio"]:checked + label .midjourney-icon {
+filter: brightness(0) invert(1);
+}
+
+/* Ensure icons for other platforms stay unchanged */
+.radio-button label img:not(.gpt-icon):not(.midjourney-icon) {
+filter: none !important;
+}
+
+/* Dark mode styles */
+.dark-mode .radio-button label {
+color: #000000;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 70px;
+height: 90px;  /* Increased height to accommodate text */
+font-size: 12px;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.model-icon {
+width: 40px;
+height: 40px;
+transition: filter 0.3s ease;
+padding: 0; /* Remove any padding on the icon */
+}
+
+
+.model-name {
+font-size: 11px;
+font-weight: 500;
+text-align: center;
+margin-top: 4px;
+color: #000000; /* Explicit color for light mode */
+}
+
+/* Dark mode styles */
+
+/* STYLE BUTTONS - Dark mode styles */
+.dark-mode .needs {
+    color: #ffffff !important;
+    font-size: 16px;
+}
+
+/* STYLE BUTTONS - Dark mode label style */
+.dark-mode .tone-label {
+    background-color: var(--dark-element-bg); /* Dark background from image */
+}
+
+/* STYLE BUTTONS - Dark mode icon container */
+.dark-mode .tone-icon {
+    background-color: transparent;
+}
+
+/* STYLE BUTTONS - Dark mode title text */
+.dark-mode .tone-title {
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
+/* STYLE BUTTONS - Dark mode description text */
+.dark-mode .tone-description {
+    color: #8B9CAA; /* Lighter gray for better readability */
+}
+
+/* STYLE BUTTONS - Dark mode hover state */
+.dark-mode .tone-label:hover {
+  border-color: #000000; /* Cyan border on hover to match the image */
+  background-color: rgb(68, 68, 68); /* Subtle highlight */
+}
+
+/* STYLE BUTTONS - Dark mode selected state */
+.dark-mode .tone-option input[type="radio"]:checked + .tone-label {
+  border-color: #000000;
+  background-color: rgb(53 53 53);
+}
+/* Default (Light Mode) */
+:root {
+  --tooltip-bg: #444444de;
+  --tooltip-text: rgb(255, 255, 255);
+  --button-bg: #2d9cdb;
+  --button-hover-bg: #2488c5;
+  --skip-button-color: rgba(255, 255, 255, 0.6);
+  --skip-button-hover-color: rgb(99, 99, 99);
+  --progress-bg: #e0e0e0;
+}
+
+/* Close button styling - simple X in the header */
+.introjs-skipbutton {
+  color: #666666 !important;
+  font-size: 20px !important;
+  font-weight: normal !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  width: 16px !important;
+  height: 16px !important;
+  line-height: 16px !important;
+  text-align: center !important;
+  display: block !important;
+  opacity: 0.7 !important;
+  transition: opacity 0.2s !important;
+  position: relative !important;
+  top: 0 !important;
+  right: 0 !important;
+  margin-left: auto !important; /* Push to the right side of the header */
+}
+
+.introjs-skipbutton:hover {
+  opacity: 1 !important;
+}
+
+.dark-mode .introjs-skipbutton {
+  color: #ffffff !important;
+}
+
+.introjs-overlay {
+  pointer-events: auto;
+  z-index: 9999;
+}
+
+/* Navigation buttons container */
+.introjs-tooltipbuttons {
+  display: flex;
+  padding: 0;
+  margin: 8px;
+  border: none;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+
+.introjs-tooltip-header::after {
+  content: none;
+}
+
+/* Styling for header with proper spacing */
+.introjs-tooltip-header {
+  position: relative;
+  min-height: 20px;
+  margin-bottom: 10px;
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0px;
+}
+
+/* Dark mode styles for the header */
+.dark-mode .header-progress {
+  background: #444 !important;
+}
+
+.dark-mode .header-progress-indicator {
+  background: #00c8ed !important;
+}
+
+
+
+.introjs-tooltip-header::after {
+  content: "";
+  display: block;
+  height: 6px;
+  background: #00c8ed;
+  border-radius: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc((attr(data-step) / attr(data-total-steps)) * 100px);
+  transition: width 0.3s ease;
+}
+
+/* Adding JavaScript-friendly data attributes directly on the header element so we can manipulate them */
+.introjs-tooltip-header {
+  position: relative;
+  min-height: 20px;
+  margin-bottom: 5px;
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0px;
+}
+
+/* Dark mode styles for header progress bar */
+.dark-mode .introjs-tooltip-header::before {
+  background: #444;
+}
+
+.dark-mode .introjs-tooltip-header::after {
+  background: #00c8ed;
+}
+
+/* Individual button styling */
+.introjs-button {
+  text-shadow: none !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 6px !important;
+  color: #6b7280 !important;
+  padding: 8px 12px !important;
+}
+
+.introjs-button:hover {
+  background-color: var(--button-hover-bg) !important;
+}
+
+.introjs-disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+.introjs-progress {
+  position: relative;
+  box-sizing: content-box;
+  overflow: visible !important;
+  height: 15px;
+  margin: 5px 0 15px 0; /* Adjusted margins */
+  border-radius: 10px;
+  background: rgba(193, 193, 193, 0.579);
+  display: flex;
+  align-items: center;
+}
+
+.introjs-progressbar {
+  height: 15px;
+  background-color: #00c8ed !important; /* Changed to match our button color */
+  border-radius: 10px; /* Made more rounded to match container */
+  transition: width 0.3s ease-in-out;
+  position: relative;
+  margin: auto 0;
+
+}
+
+/* Animation for the logo glow effect */
+@keyframes logoGlow {
+  0% {
+    filter: drop-shadow(0 0 2px rgba(0, 200, 237, 0.3))
+           drop-shadow(0 0 4px rgba(0, 200, 237, 0.2))
+           drop-shadow(0 0 6px rgba(0, 200, 237, 0.1));
+  }
+  50% {
+    filter: drop-shadow(0 0 3px rgba(0, 200, 237, 0.4))
+           drop-shadow(0 0 6px rgba(0, 200, 237, 0.3))
+           drop-shadow(0 0 9px rgba(0, 200, 237, 0.2));
+  }
+  100% {
+    filter: drop-shadow(0 0 2px rgba(0, 200, 237, 0.3))
+           drop-shadow(0 0 4px rgba(0, 200, 237, 0.2))
+           drop-shadow(0 0 6px rgba(0, 200, 237, 0.1));
+  }
+}
+
+.introjs-progressbar::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 35px;
+  height: 35px;
+  background: url("../assets/Velocity_Logo.png") no-repeat center/contain;
+  animation: spinProgress 0.5s ease-out; /* Combined animations */
+  transition: right 0.3s ease-in-out;
+}
+
+@keyframes spinProgress {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+/* Add glow effect to the logo */
+.header-progress-logo {
+
+  z-index: 2;
+}
+
+/* Style the progress bar itself */
+.header-progress {
+  width: 65%;
+  height: 8px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  position: relative;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+
+.header-progress-bar {
+  height: 100%;
+  background: #00c8ed;
+  border-radius: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+/* Dark mode styles */
+.dark-mode .header-progress {
+  background: #444;
+}
+
+.dark-mode .header-progress-bar {
+  background: #00c8ed;
+}
+
+/* Helper layer styling */
+.introjs-helperLayer {
+  transition: all 0.3s ease-out !important;
+  pointer-events: auto !important; /* Enable interaction with highlighted elements */
+  z-index: 9998 !important;
+  box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Custom tooltip */
+.customTooltip .introjs-tooltip-title {
+  display: none !important;
+}
+
+.customTooltip .introjs-button {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: var(--button-bg) !important;
+  color: var(--tooltip-text) !important;
+  text-shadow: none !important;
+  pointer-events: auto !important; /* Enable interaction with custom buttons */
+}
+
+.customTooltip .introjs-button:hover {
+  background-color: var(--button-hover-bg) !important;
+}
+.customTooltip .introjs-prevbutton,
+.customTooltip .introjs-nextbutton,
+.customTooltip .introjs-donebutton {
+  font-size: 14px !important;
+  padding: 8px 16px !important;
+  position: relative !important;
+  border-radius: 20px !important;
+  color: #000000 !important;
+  font-weight: 500 !important;
+  min-width: 60px !important;
+  text-align: center !important;
+  transition: all 0.15s ease !important;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8) !important;
+}
+
+.customTooltip .introjs-prevbutton {
+  margin-right: auto;
+  background-color: #ffffff !important; /* Changed to white */
+  border: 1px solid #000000 !important;
+}
+
+.customTooltip .introjs-nextbutton,
+.customTooltip .introjs-donebutton {
+  background-color: #00c8ed !important; /* Bright cyan blue */
+  color: #000000 !important;
+  border: 1px solid #000000 !important;
+}
+
+/* Button press animation */
+.customTooltip .introjs-button:active {
+  transform: translateY(2px) !important;
+}
+
+.customTooltip .introjs-button.clicked {
+  animation: buttonPress 0.3s ease forwards !important;
+}
+
+@keyframes buttonPress {
+  0% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.introjs-tooltipbuttons {
+  display: flex;
+  padding: 0;
+  margin-top: 0;
+  border: none;
+  justify-content: space-between;
+  gap: 10px;
+}
+/* Ensure tutorial steps allow interaction with relevant elements */
+#promptInput,
+#chatgpt-option,
+label[for="descriptive"],
+#sendButton,
+.enhance-toggle-small {
+  pointer-events: auto !important; /* Allow interaction with these elements during the tutorial */
+}
+
+/* Add overlay styles to block interaction */
+.tutorial-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.5); */
+  z-index: 9998;
+}
+
+/* Style for elements during tutorial */
+.tutorial-active {
+  position: relative;
+  z-index: 10000; /* Above overlay */
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+  /* font-weight: 900; */
+  font-style: normal;
+}
+
+.introjs-tooltip {
+  background: #FFFFFF !important; /* Changed to white */
+  border-radius: 22px !important;
+  border: 2.5px solid black;
+  box-shadow: 2px 2px 1px rgb(0 0 0 / 60%) !important;
+  width: 230px !important;
+  min-width: 10px !important;
+  max-width: 250px !important;
+  pointer-events: auto !important;
+  margin-top: 5px !important;
+  padding: 8px !important;
+  position: absolute !important;
+  z-index: 10000 !important;
+}
+
+/* Dark mode styles for the tooltip */
+.dark-mode .introjs-tooltip {
+  background: #1f1f1f !important; /* Dark background for tooltip in dark mode */
+  color: #ffffff !important; /* White text for dark mode */
+  border: none;
+}
+
+.dark-mode .introjs-tooltiptext {
+  color: #ffffff !important; /* White text for dark mode */
+}
+
+.dark-mode .introjs-tooltip-header {
+  color: #ffffff !important; /* White text color for header in dark mode */
+}
+
+/* New style for the inner blue box that contains the step text */
+.introjs-tooltiptext {
+  color: #000000 !important; /* Black text on blue background */
+  line-height: 1.4 !important;
+  text-align: left !important;
+  font-size: 15px !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 500 !important;
+  margin: 10px 0 20px 0 !important; /* Add margin */
+  background-color: #cdf6fd !important; /* Blue background */
+  border-radius: 12px !important;
+  border: 2px solid #000000 !important;
+  display: block !important;
+  padding: 10px !important;
+}
+
+/* Dark mode version of inner blue box */
+.dark-mode .introjs-tooltiptext {
+  background-color: hsl(197, 40%, 25%) !important; /* Slightly lighter than the parent for contrast */
+  border: 1px solid #2A3A45 !important;
+  color: #ffffff !important;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Dark mode button styling */
+.dark-mode .customTooltip .introjs-prevbutton {
+  background-color: #333333 !important;
+  color: #ffffff !important;
+}
+
+.dark-mode .customTooltip .introjs-nextbutton,
+.dark-mode .customTooltip .introjs-donebutton {
+  background-color: hsl(190, 100%, 37%) !important; /* Keep the same bright blue */
+  color: #000000 !important; /* Black text on blue button */
+}
+
+.dark-mode .introjs-progress {
+  background: rgba(96, 96, 96, 0.368); /* Adjust background for dark mode */
+  border-radius: 10px; /* Keep the same border radius */
+}
+
+
+/* Enhanced glow animation */
+@keyframes tooltipGlow {
+  from {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+                0 0 20px rgba(0, 138, 203, 0.4),
+                0 0 40px rgba(0, 138, 203, 0.3);
+  }
+  to {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+                0 0 30px rgba(0, 138, 203, 0.6),
+                0 0 60px rgba(0, 138, 203, 0.4);
+  }
+}
+
+/* Make arrow very thin */
+.introjs-arrow {
+  display: none !important;
+}
+
+
+
+/* Add this CSS for tooltip styling */
+.custom-tooltip {
+  position: absolute;
+  background: #292929e8;
+  border-radius: 10px;
+  border: 1px solid #008ACB;
+  padding: 5px 10px;
+  color: #ffffff;
+  font-size: 12px;
+  z-index: 10001;
+  display: none;
+  box-shadow: 0 0 10px rgba(0, 138, 203, 0.4);
+  max-width: 200px;
+  white-space: normal;
+}
+
+.dark-mode .custom-tooltip {
+  border: 1px solid var(--dark-border);
+  background-color: var(--dark-element-bg);
+  color: var(--dark-text-color);
+}
+
+/* Style for the Finish button */
+.introjs-finalbutton {
+    background-color: #00c8ed !important; /* Bright cyan blue */
+    color: #000000 !important;
+    border: 1px solid #000000 !important;
+    border-radius: 20px !important;
+    font-size: 14px !important;
+    padding: 8px 16px !important;
+    font-weight: 500 !important;
+    min-width: 60px !important;
+    text-align: center !important;
+    transition: all 0.15s ease !important;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8) !important;
+    cursor: pointer !important;
+}
+
+.introjs-finalbutton:hover {
+    background-color: #00daff !important;
+}
+
+/* Dark mode button styling */
+.dark-mode .introjs-finalbutton {
+  background-color: hsl(190, 100%, 37%) !important;
+  color: #000000 !important;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Class to disable pointer events */
+.disable-pointer-events {
+    pointer-events: none !important; /* Disable all pointer events */
+}
+
+/* Allow pointer events for active tutorial element */
+.allow-pointer-events {
+    pointer-events: auto !important; /* Enable pointer events */
+    position: relative !important;
+    z-index: 10001 !important; /* Ensure it's above the overlay */
+}
+
+/* Add styles for the info box below the Generate button */
+.info-box {
+  background-color: #c8e5f8;
+  color: #1e3a5f;
+  text-align: center;
+  padding: 8px;
+  border-radius: 12px;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 550px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode support for the info box */
+body.dark-mode .info-box {
+  background-color: rgba(200, 229, 248, 0.2);
+  color: #c8e5f8;
+}
+
+#infoButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid black;
+  color: #000000;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: all 0.2s ease;
+}
+
+#infoButton:hover {
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
+  box-shadow: none !important;
+  transform: translate(3px, 3px);
+}
+
+#infoButton img {
+  width: 28px;
+  height: 28px;
+  transition: all 0.3s ease;
+}
+
+#infoButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode #infoButton {
+  background-color: var(--dark-element-bg);
+  border: 1px solid black;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+#darkModeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid black;
+  color: #000000;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: all 0.2s ease;
+}
+
+#darkModeToggle:hover {
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+#darkModeToggle img {
+  width: 22px;
+  height: 22px;
+  transition: all 0.3s ease;
+}
+
+.dark-mode #darkModeToggle {
+  background-color: var(--dark-element-bg);
+  border: 1px solid black;
+}
+
+#settingsButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid black;
+  color: #000000;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: all 0.2s ease;
+}
+
+#settingsButton:hover {
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+#settingsButton img {
+  width: 22px;
+  height: 22px;
+  transition: all 0.3s ease;
+}
+
+.dark-mode #settingsButton {
+  background-color: var(--dark-element-bg);
+  border: 1px solid black;
+}
+
+/* Button press animation for Insert button */
+.Insert-button:hover {
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+/* Apply pop-up animation when clicked */
+.Insert-button.clicked {
+  animation: buttonPopUp 0.3s ease forwards;
+}
+
+@keyframes buttonPopUp {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.mode-icon {
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Bottom Controls Container styles */
+.bottom-action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px 20px 16px;
+  background-color: #ffffff;
+  position: absolute;
+  gap: 10px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.dark-mode .bottom-action-bar {
+  background-color: #152a31;
+}
+
+/* Left side buttons (back and copy) */
+.left-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 4px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-button:active {
+  background-color: #f3f4f6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.action-button img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Right side platform selector with highlight effect */
+.platform-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f0f9ff;
+  border-radius: 8px;
+  padding: 4px 6px;
+  cursor: pointer;
+  border: 1px solid;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.7);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.dark-mode .platform-selector {
+  background-color: #1f1f1f;
+  border: 1px solid black;
+}
+
+.open-in-text {
+  font-size: 14px;
+  color: #4b5563;
+  margin-right: 4px;
+}
+
+.dark-mode .open-in-text {
+  color: #9ca3af;
+}
+
+.platform-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border: 1px solid;
+  border-radius: 6px;
+}
+
+.platform-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.platform-name span {
+  font-weight: 500;
+  color: #1f2937;
+  font-size: 14px;
+}
+
+.dark-mode .platform-name span {
+  color: #e5e7eb;
+}
+
+.send-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: #00c8ed;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  font-size: 14px;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+.send-button:hover {
+  background-color: #00daff;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+
+/* Adjust the responses grid to make room for the bottom bar */
+.responses-grid {
+  overflow-y: auto;
+  max-height: calc(100% - 120px);
+  margin-bottom: 55px;
+}
+
+/* Make response cards fit better */
+.response-card {
+  margin: 12px 16px;
+}
+
+/* Platform dropdown styles */
+.platform-dropdown {
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 130px;
+  max-height: 160px;
+  overflow-y: auto;
+  margin-right: 68px;
+  bottom: 60px;
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  z-index: 1100;
+}
+
+.dark-mode .platform-dropdown {
+  background-color: #1f1f1f;
+  border-color: #000000;
+}
+
+.llm-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px;
+  margin: 9px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.llm-option:hover {
+  background-color: #f3f4f6;
+  border: 1px solid #000000;
+  border-radius: 6px;
+}
+
+.dark-mode .llm-option:hover {
+  background-color: #374151;
+}
+
+.llm-option img {
+  width: 20px;
+  height: 20px;
+}
+
+.llm-option span {
+  font-size: 14px;
+  color: #1f2937;
+}
+
+.dark-mode .llm-option span {
+  color: #e5e7eb;
+}
+
+/* Dark mode styles for action buttons in results view */
+.dark-mode .back-arrow-icon,
+.dark-mode .copy-icon,
+.dark-mode .send-arrow-icon {
+  filter: invert(1);
+}
+/* Make sure the dark mode versions don't get inverted again */
+.dark-mode img[src$="-darkmode.png"] {
+  filter: none !important;
+}
+
+/* Skeleton loader for response card and platform selector */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.skeleton-card {
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 16px;
+  padding: 12px;
+  margin: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  animation: slideIn 0.3s ease-out;
+  overflow: hidden;
+}
+
+.skeleton-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+  animation: shimmer 1.5s infinite;
+}
+
+.dark-mode .skeleton-card {
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+}
+
+.skeleton-line {
+  height: 14px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #f0f0f0 8%, #e0e0e0 18%, #f0f0f0 33%);
+  background-size: 800px 104px;
+  animation: shimmer 1.5s linear infinite forwards;
+}
+
+.dark-mode .skeleton-line {
+  background: linear-gradient(to right, #2a2a2a 8%, #333333 18%, #2a2a2a 33%);
+}
+
+.platform-skeleton-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 6px;
+  background: linear-gradient(to right, #f0f0f0 8%, #e0e0e0 18%, #f0f0f0 33%);
+  background-size: 800px 104px;
+  animation: shimmer 1.5s linear infinite forwards;
+}
+
+.platform-skeleton-text {
+  width: 40px;
+  height: 12px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #f0f0f0 8%, #e0e0e0 18%, #f0f0f0 33%);
+  background-size: 800px 104px;
+  animation: shimmer 1.5s linear infinite forwards;
+}
+
+.dark-mode .platform-skeleton-icon,
+.dark-mode .platform-skeleton-text {
+  background: linear-gradient(to right, #2a2a2a 8%, #333333 18%, #2a2a2a 33%);
+}
+
+/* Highlight effect for platform selector when LLM is suggested */
+@keyframes platformHighlight {
+  0% {
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.7);
+  }
+  50% {
+    box-shadow: 2px 2px 10px rgba(0, 200, 237, 0.8);
+  }
+  100% {
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.7);
+  }
+}
+
+.platform-selector.highlight {
+  animation: platformHighlight 1.5s ease-in-out 2;
+}
+
+.dark-mode .platform-selector.highlight {
+  animation: platformHighlight 1.5s ease-in-out 2;
+}
+
+/* Error validation effects for empty input */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.error-shake {
+  animation: shake 0.8s ease;
+}
+
+.error-border {
+  border-color: #ff3b30 !important;
+  transition: border-color 0.3s ease;
+}
+
+/* Dark mode variant */
+.dark-mode .error-border {
+  border-color: #ff453a !important;
+}
+
+.skeleton-card {
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  animation: slideIn 0.3s ease-out;
+  overflow: hidden;
+}
+
+.skeleton-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+  animation: shimmer 1.5s infinite;
+}
+
+.dark-mode .skeleton-card {
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+}
+
+.dark-mode .skeleton-card::after {
+  background: linear-gradient(90deg, rgba(50,50,50,0) 0%, rgba(50,50,50,0.5) 50%, rgba(50,50,50,0) 100%);
+}
+
+.skeleton-line {
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin: 12px 0;
+}
+
+.skeleton-line:nth-child(1) {
+  width: 90%;
+}
+
+.skeleton-line:nth-child(2) {
+  width: 80%;
+}
+
+.skeleton-line:nth-child(3) {
+  width: 85%;
+}
+
+.skeleton-line:nth-child(4) {
+  width: 70%;
+}
+
+.skeleton-line:nth-child(5) {
+  width: 75%;
+}
+
+.dark-mode .skeleton-line {
+  background-color: #3a3a3a;
+}
+
+/* Header skeleton loader */
+.skeleton-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-title {
+  height: 24px;
+  width: 200px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+
+.dark-mode .skeleton-title {
+  background-color: #3a3a3a;
+}
+
+/* Platform selector skeleton */
+.platform-skeleton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 4px 6px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode .platform-skeleton {
+  background-color: #1f1f1f;
+  border: 1px solid black;
+}
+
+.platform-skeleton-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+}
+
+.platform-skeleton-text {
+  width: 80px;
+  height: 16px;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+}
+
+.dark-mode .platform-skeleton-icon,
+.dark-mode .platform-skeleton-text {
+  background-color: #3a3a3a;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.dark-mode .skeleton-card {
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+}
+
+.dark-mode .skeleton-card::after {
+  background: linear-gradient(90deg, rgba(50,50,50,0) 0%, rgba(50,50,50,0.5) 50%, rgba(50,50,50,0) 100%);
+}
+
+.dark-mode .skeleton-line {
+  background-color: #3a3a3a;
+}
+
+.dark-mode .skeleton-header::after {
+  background: linear-gradient(90deg, rgba(50,50,50,0) 0%, rgba(50,50,50,0.5) 50%, rgba(50,50,50,0) 100%);
+}
+
+.dark-mode .skeleton-title {
+  background-color: #3a3a3a;
+}
+
+/* Login button styling */
+.login-status-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+  color: #000;
+}
+
+.login-status-indicator:hover {
+  background-color: #F0F0F0;
+}
+
+.login-status-indicator:active {
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.status-text {
+  display: inline-block;
+}
+
+/* Free trial status */
+.login-status-indicator.free-trial {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+/* Logged out status */
+.login-status-indicator.logged-out {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+/* ===== PREFERENCE MANAGEMENT STYLES (Minimal for Apply Button) ===== */
+
+/* Simple notification styles for preference save feedback */
+.preference-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  z-index: 10000;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.preference-notification.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.preference-notification.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+.preference-notification .status-icon::before {
+  font-size: 14px;
+}
+
+.preference-notification.success .status-icon::before {
+  content: "✅";
+}
+
+.preference-notification.error .status-icon::before {
+  content: "❌";
+}
+
+/* Dark mode styles */
+.dark-mode .preference-notification.success {
+  background: #22543d;
+  color: #9ae6b4;
+  border-color: #38a169;
+}
+
+.dark-mode .preference-notification.error {
+  background: #742a2a;
+  color: #feb2b2;
+  border-color: #e53e3e;
+}
+
+/* Button active states */
+.action-button.active,
+.Insert-button.active,
+.generate-button.active {
+  background-color: var(--active-button-bg, #4CAF50);
+  color: white;
+  transform: scale(0.98);
+}
+
+.dark-mode .action-button.active,
+.dark-mode .Insert-button.active,
+.dark-mode .generate-button.active {
+  background-color: var(--active-button-bg-dark, #45a049);
+}
+
+/* Toggle button active state */
+.toggle-slider-small.active {
+  background-color: var(--active-toggle-bg, #4CAF50);
+}
+
+.dark-mode .toggle-slider-small.active {
+  background-color: var(--active-toggle-bg-dark, #45a049);
+}
+
+/* Like/Dislike button active states */
+#likeButton.active {
+  background-color: var(--active-like-bg, #4CAF50);
+}
+
+#dislikeButton.active {
+  background-color: var(--active-dislike-bg, #f44336);
+}
+
+.dark-mode #likeButton.active {
+  background-color: var(--active-like-bg-dark, #45a049);
+}
+
+.dark-mode #dislikeButton.active {
+  background-color: var(--active-dislike-bg-dark, #d32f2f);
+}
+
+/* Page transition animations */
+.main-content,
+.responses-wrapper,
+.settings-wrapper,
+.additional-settings-section {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.main-content.hidden,
+.responses-wrapper.hidden,
+.settings-wrapper.hidden,
+.additional-settings-section.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+/* Ensure active states persist during transitions */
+.action-button.active,
+.Insert-button.active,
+.generate-button.active,
+.toggle-slider-small.active,
+#likeButton.active,
+#dislikeButton.active {
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Button visibility transitions */
+#infoButton,
+#darkModeToggle,
+#settingsButton {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  opacity: 1;
+  transform: scale(1);
+  visibility: visible;
+}
+
+#infoButton[style*="display: none"],
+#darkModeToggle[style*="display: none"],
+#settingsButton[style*="display: none"],
+#infoButton[style*="visibility: hidden"],
+#darkModeToggle[style*="visibility: hidden"],
+#settingsButton[style*="visibility: hidden"] {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  visibility: hidden !important;
+}
+
+/* Ensure buttons are properly aligned when visible */
+.mleft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+/* Ensure smooth transitions between views */
+.main-content,
+.responses-wrapper,
+.settings-wrapper {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.main-content.hidden,
+.responses-wrapper.hidden,
+.settings-wrapper.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+/* Ensure buttons maintain their layout during transitions */
+.title1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+/* Ensure button icons maintain their size during transitions */
+.mode-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Ensure dark mode button stays visible during transitions */
+#darkModeToggle {
+  position: relative;
+  z-index: 10;
+}
+
+/* Ensure settings button stays visible during transitions */
+#settingsButton {
+  position: relative;
+  z-index: 10;
+}
+
+/* Ensure info button stays visible during transitions */
+#infoButton {
+  position: relative;
+  z-index: 10;
+}
+
+/* Hide buttons when parent is hidden */
+.responses-wrapper.hidden #settingsButton,
+.responses-wrapper.hidden #infoButton {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.additional-settings-section .dropdown-button-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.additional-settings-section .dropdown-button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .additional-settings-section .dropdown-button {
+  background: #1a1a1a;
+  border-color: #2d2d2d;
+  color: #ffffff;
+}
+
+.additional-settings-section .dropdown-button:hover {
+  border-color: #3b82f6;
+}
+
+.dark-mode .additional-settings-section .dropdown-button:hover {
+  border-color: #60a5fa;
+}
+
+.additional-settings-section .dropdown-button-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.additional-settings-section .dropdown-button-name {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.dark-mode .additional-settings-section .dropdown-button-name {
+  color: #9ca3af;
+}
+
+.additional-settings-section .dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+.dark-mode .additional-settings-section .dropdown-content {
+  background: #1a1a1a;
+  border-color: #2d2d2d;
+}
+
+.additional-settings-section .dropdown-content.show {
+  display: block;
+}
+
+.additional-settings-section .dropdown-card {
+  padding: 0.5rem;
+}
+
+.additional-settings-section .dropdown-item {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.additional-settings-section .dropdown-item:hover {
+  background: #f3f4f6;
+}
+
+.dark-mode .additional-settings-section .dropdown-item:hover {
+  background: #2d2d2d;
+}
+
+.additional-settings-section .dropdown-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.additional-settings-section .dropdown-card-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.dark-mode .additional-settings-section .dropdown-card-name {
+  color: #e5e7eb;
+}
+
+.additional-settings-section .dropdown-card-desc {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.dark-mode .additional-settings-section .dropdown-card-desc {
+  color: #9ca3af;
+}
+
+.additional-settings-section .dropdownicon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.additional-settings-section .dropdown-button.active .dropdownicon {
+  transform: rotate(180deg);
+}
+
+.additional-settings-section .template-selector {
+  width: 100%;
+  padding: 10px;
+  background: #FFFFFF;
+  border: 2px solid black;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #000000;
+  cursor: pointer;
+  appearance: none;
+  background-image: url('./assets/downarrow.png');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .additional-settings-section .template-selector {
+  background-color: #1f1f1f;
+  border-color: #080808c2;
+  color: white;
+  background-image: url('./assets/downarrow-darkmode.png');
+}
+
+.additional-settings-section .template-selector:hover {
+  border-color: #3b82f6;
+  background-color: #f8fafc;
+}
+
+.dark-mode .additional-settings-section .template-selector:hover {
+  border-color: #60a5fa;
+  background-color: #2d2d2d;
+}
+
+.additional-settings-section .template-selector:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+  background-color: #f8fafc;
+}
+
+.dark-mode .additional-settings-section .template-selector:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.1);
+  background-color: #2d2d2d;
+}
+
+.additional-settings-section .template-selector option {
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  color: #1f2937;
+  font-size: 0.875rem;
+}
+
+.dark-mode .additional-settings-section .template-selector option {
+  background: #1a1a1a;
+  color: #e5e7eb;
+}
+
+.additional-settings-section .template-selector option:hover {
+  background-color: #f3f4f6;
+}
+
+.dark-mode .additional-settings-section .template-selector option:hover {
+  background-color: #2d2d2d;
+}
+
+.additional-settings-section .template-selector option:checked {
+  background-color: #e5e7eb;
+  color: #1f2937;
+}
+
+.dark-mode .additional-settings-section .template-selector option:checked {
+  background-color: #2d2d2d;
+  color: #e5e7eb;
+}
+
+.additional-settings-section .template-selector::-webkit-scrollbar {
+  width: 8px;
+}
+
+.additional-settings-section .template-selector::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.additional-settings-section .template-selector::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.dark-mode .additional-settings-section .template-selector::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+.dark-mode .additional-settings-section .template-selector::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+

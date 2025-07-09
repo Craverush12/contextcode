@@ -1,0 +1,1335 @@
+/**
+ * messageBoxStates.css
+ *
+ * Styles for the WebSocket response state message boxes
+ */
+
+/* Light mode styles */
+.velocity-state-message-box {
+  position: fixed;
+  z-index: 999999;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  width: 320px;
+  max-width: 90vw;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none; /* Default: no pointer events */
+}
+
+.velocity-state-message-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto; /* Enable pointer events when visible */
+}
+
+/* Arrow positioning */
+.velocity-state-message-box::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  transition: all 0.3s ease;
+}
+
+/* Bottom position arrows */
+.velocity-state-message-box:not(.positioned-above)[data-position="right"]::before {
+  top: -16px;
+  left: 20px;
+  border-bottom-color: #fff;
+}
+
+.velocity-state-message-box:not(.positioned-above)[data-position="left"]::before {
+  top: -16px;
+  right: 20px;
+  border-bottom-color: #fff;
+}
+
+/* Top position arrows */
+.velocity-state-message-box.positioned-above[data-position="right"]::before {
+  bottom: -16px;
+  left: 20px;
+  border-top-color: #fff;
+}
+
+.velocity-state-message-box.positioned-above[data-position="left"]::before {
+  bottom: -16px;
+  right: 20px;
+  border-top-color: #fff;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .velocity-state-message-box {
+  background: #1a1a1a;
+}
+
+/* Dark mode arrows - bottom position */
+body.dark-mode .velocity-state-message-box:not(.positioned-above)[data-position="right"]::before {
+  border-bottom-color: #1a1a1a;
+}
+
+body.dark-mode .velocity-state-message-box:not(.positioned-above)[data-position="left"]::before {
+  border-bottom-color: #1a1a1a;
+}
+
+/* Dark mode arrows - top position */
+body.dark-mode .velocity-state-message-box.positioned-above[data-position="right"]::before {
+  border-top-color: #1a1a1a;
+}
+
+body.dark-mode .velocity-state-message-box.positioned-above[data-position="left"]::before {
+  border-top-color: #1a1a1a;
+}
+
+/* Message Header */
+.velocity-state-message-box .message-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.velocity-state-message-box .state-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.velocity-state-message-box .state-title {
+  flex-grow: 1;
+  font-weight: 500;
+  color: #222;
+}
+
+.velocity-state-message-box .close-button {
+  cursor: pointer;
+  font-size: 18px;
+  color: #999;
+  line-height: 1;
+}
+
+.velocity-state-message-box .close-button:hover {
+  color: #666;
+}
+
+/* Message Content */
+.velocity-state-message-box .message-content {
+  padding: 0px 16px 16px 16px;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 99999;
+}
+
+/* State-specific styles */
+
+/* Idle state */
+.velocity-state-message-box[data-state="idle"] .state-indicator {
+  background-color: #0088ff;
+}
+
+.velocity-state-message-box[data-state="idle"] .suggestion-box {
+  background-color: #E3F2FD;
+  border: 2px solid #0088ff;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  position: relative;
+  cursor: pointer;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.1s;
+}
+
+.velocity-state-message-box[data-state="idle"] .suggestion-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 136, 255, 0.15);
+  transition-delay: 0.15s;
+}
+
+.velocity-state-message-box[data-state="idle"] .suggestion-box .loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.velocity-state-message-box[data-state="idle"] .suggestion-box .loading-bar-container {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.velocity-state-message-box[data-state="idle"] .suggestion-box .loading-bar {
+  width: 6px;
+  height: 24px;
+  background-color: #0088ff;
+  border-radius: 3px;
+  animation: loading-pulse 1.5s ease-in-out infinite;
+}
+
+.velocity-state-message-box[data-state="idle"] .suggestion-box .loading-bar:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.velocity-state-message-box[data-state="idle"] .suggestion-box .loading-bar:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes loading-pulse {
+  0%, 100% {
+    transform: scaleY(0.4);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.velocity-state-message-box[data-state="idle"] .suggestion-text {
+  color: #000;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.1s;
+  max-height: 42px;
+}
+
+.velocity-state-message-box[data-state="idle"] .suggestion-box:hover .suggestion-text {
+  -webkit-line-clamp: unset;
+  max-height: 200px;
+  transition-delay: 0.2s;
+}
+
+/* Suggestion use button */
+.suggestion-use-button {
+  background-color: #0088ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: background-color 0.2s;
+  margin-top: 4px;
+}
+
+.suggestion-use-button:hover {
+  background-color: #0066cc;
+}
+
+body.dark-mode .suggestion-use-button {
+  background-color: #0066cc;
+}
+
+body.dark-mode .suggestion-use-button:hover {
+  background-color: #004c99;
+}
+
+/* Hover effects for suggestion boxes (maintain fill color) */
+.velocity-state-message-box[data-state="idle"] .suggestion-boxes {
+  display: flex;
+  flex-direction: column;
+}
+
+.velocity-state-message-box[data-state="idle"] .action-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  position: relative;
+  z-index: 1000;
+}
+
+.velocity-state-message-box[data-state="idle"] .action-button {
+  background-color: #0088ff;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 6px 24px;
+  cursor: pointer;
+  font-size: 14px;
+  position: relative;
+  z-index: 1001;
+  pointer-events: auto;
+}
+
+.velocity-state-message-box[data-state="idle"] .action-button.remix-button,
+.velocity-state-message-box[data-state="idle"] .action-button.help-button {
+  background-color: #00C8F0;
+  color: black !important;
+  font-weight: 500;
+  border: 1px solid #000000;
+  margin: 0 5px;
+  transition: all 0.15s ease;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  pointer-events: auto;
+}
+
+.velocity-state-message-box[data-state="idle"] .action-button.remix-button:hover,
+.velocity-state-message-box[data-state="idle"] .action-button.help-button:hover {
+  background-color: #00d5fff1;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.velocity-state-message-box[data-state="idle"] .action-button.remix-button:active,
+.velocity-state-message-box[data-state="idle"] .action-button.help-button:active {
+  transform: translateY(2px);
+}
+
+/* Analyzing state */
+.velocity-state-message-box[data-state="analyzing"] .state-indicator {
+  background-color: #FFA000;
+}
+
+.velocity-state-message-box[data-state="analyzing"] .loading-bar-container {
+  background: #fff;
+  border: 2px solid #222;
+  border-radius: 10px;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.velocity-state-message-box[data-state="analyzing"] .loading-bar {
+  height: 16px;
+  background: #E8E8E8;
+  border-radius: 6px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.velocity-state-message-box[data-state="analyzing"] .loading-bar::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(200,200,200,0.5) 50%, rgba(255,255,255,0) 100%);
+  animation: shimmer-bar 1.2s infinite;
+}
+
+.velocity-state-message-box[data-state="analyzing"] .loading-bar:nth-child(2)::after {
+  animation-delay: 0.6s;
+}
+
+@keyframes shimmer-bar {
+  0% { left: -40%; }
+  100% { left: 100%; }
+}
+
+/* Bad quality state (Red) */
+.velocity-state-message-box[data-state="bad"] .state-indicator {
+  background-color: #EF4444;
+}
+
+.velocity-state-message-box[data-state="bad"] .suggestion-content {
+  background-color: #FEE2E2;
+  color: #000;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.velocity-state-message-box[data-state="bad"] .suggestion-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.velocity-state-message-box[data-state="bad"] .help-text {
+  color: #999;
+  font-size: 12px;
+}
+
+.velocity-state-message-box[data-state="bad"] .need-help-button {
+  background-color: #f0f0f0;
+  color: #000;
+  border: 1px solid #000000;
+  border-radius: 16px;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  margin: 0 5px;
+  transition: all 0.15s ease;
+  font-weight: 400;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.velocity-state-message-box[data-state="bad"] .need-help-button:hover {
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.velocity-state-message-box[data-state="bad"] .need-help-button:active {
+  transform: translateY(2px);
+}
+
+.velocity-state-message-box[data-state="bad"] .suggestion-button {
+  background-color: #00c8ed;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 5px;
+  transition: all 0.15s ease;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.velocity-state-message-box[data-state="bad"] .suggestion-button:hover {
+  background-color: #00daff;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.velocity-state-message-box[data-state="bad"] .suggestion-button:active {
+  transform: translateY(2px);
+}
+
+/* OK quality state (Yellow) */
+.velocity-state-message-box[data-state="ok"] .state-indicator {
+  background-color: #FFA000;
+}
+
+.velocity-state-message-box[data-state="ok"] .suggestion-content {
+  background-color: #CDF6FE;
+  color: #000;
+  border-radius: 6px;
+  border: 1px solid #000000;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.velocity-state-message-box[data-state="ok"] .suggestion-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.velocity-state-message-box[data-state="ok"] .help-text {
+  color: #999;
+  font-size: 12px;
+}
+
+.velocity-state-message-box[data-state="ok"] .need-help-button {
+  background-color: #f0f0f0;
+  color: #000;
+  border: 1px solid #000000;
+  border-radius: 16px;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  margin: 0 5px;
+  transition: all 0.15s ease;
+  font-weight: 400;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.velocity-state-message-box[data-state="ok"] .need-help-button:hover {
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.velocity-state-message-box[data-state="ok"] .need-help-button:active {
+  transform: translateY(2px);
+}
+
+.velocity-state-message-box[data-state="ok"] .suggestion-button {
+  background-color: #00c8ed;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 5px;
+  transition: all 0.15s ease;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.velocity-state-message-box[data-state="ok"] .suggestion-button:hover {
+  background-color: #00daff;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.velocity-state-message-box[data-state="ok"] .suggestion-button:active {
+  transform: translateY(2px);
+}
+
+/* Good quality state (Green) */
+.velocity-state-message-box[data-state="good"] .state-indicator {
+  background-color: #10B981;
+}
+
+.velocity-state-message-box[data-state="good"] .suggestion-content {
+  background-color: #CDF6FE;
+  color: #000;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+/* Idle with content state */
+.velocity-state-message-box[data-state="idleWithContent"] .state-indicator {
+  background-color: #0088ff;
+}
+
+.velocity-state-message-box[data-state="idleWithContent"] .suggestion-boxes {
+  display: flex;
+  flex-direction: column;
+}
+
+.velocity-state-message-box[data-state="idleWithContent"] .suggestion-box {
+  background-color: #CDF6FE;
+  color: #000;
+  border: 2px solid #222;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.velocity-state-message-box[data-state="idleWithContent"] .action-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.velocity-state-message-box[data-state="idleWithContent"] .action-button {
+  background-color: #0088ff;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 6px 24px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.velocity-state-message-box[data-state="idleWithContent"] .action-button.remix-button,
+.velocity-state-message-box[data-state="idleWithContent"] .action-button.help-button {
+  background-color: #00C8F0;
+  color: black !important;
+  font-weight: 500;
+  border: 1px solid #000000;
+  margin: 0 5px;
+  transition: all 0.15s ease;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.velocity-state-message-box[data-state="idleWithContent"] .action-button.remix-button:hover,
+.velocity-state-message-box[data-state="idleWithContent"] .action-button.help-button:hover {
+  background-color: #00d5fff1;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.velocity-state-message-box[data-state="idleWithContent"] .action-button.remix-button:active,
+.velocity-state-message-box[data-state="idleWithContent"] .action-button.help-button:active {
+  transform: translateY(2px);
+}
+
+/* Dark mode styles for overall message box */
+body.dark-mode .velocity-state-message-box {
+  background-color: #10242b;
+  border: 2px solid #0a1a1f;
+}
+body.dark-mode .velocity-state-message-box .state-title {
+  color: #fff;
+}
+
+/* Dark mode styles for suggestion boxes */
+body.dark-mode .velocity-state-message-box[data-state="idle"] .suggestion-box {
+  background-color: #2a2a2a;
+  border-color: #0088ff;
+}
+
+body.dark-mode .velocity-state-message-box[data-state="idle"] .suggestion-box:hover {
+  box-shadow: 0 4px 12px rgba(0, 136, 255, 0.25);
+}
+
+body.dark-mode .velocity-state-message-box .suggestion-text {
+  color: #fff;
+}
+
+body.dark-mode .velocity-state-message-box[data-state="analyzing"] .loading-bar-container {
+  background: #183642;
+  border: 2px solid #0a1a1f;
+}
+body.dark-mode .velocity-state-message-box[data-state="analyzing"] .loading-bar {
+  background: #19363b;
+}
+body.dark-mode .velocity-state-message-box[data-state="analyzing"] .loading-bar::after {
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(60,120,130,0.4) 50%, rgba(0,0,0,0) 100%);
+}
+body.dark-mode .velocity-state-message-box[data-state="bad"] .suggestion-content {
+  background-color: #181f22;
+  color: #fff;
+  border: 1px solid #000000;
+}
+body.dark-mode .velocity-state-message-box[data-state="bad"] .need-help-button {
+  background-color: #2a363c;
+  color: #fff;
+  border: 1px solid #3a464c;
+}
+
+body.dark-mode .velocity-state-message-box[data-state="bad"] .need-help-button:hover {
+  background-color: #3a464c;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+body.dark-mode .velocity-state-message-box[data-state="bad"] .suggestion-button {
+  background-color: #00c8ed;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+body.dark-mode .velocity-state-message-box[data-state="bad"] .suggestion-button:hover {
+  background-color: #00daff;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+body.dark-mode .velocity-state-message-box[data-state="ok"] .suggestion-content {
+  background-color: #181f22;
+  color: #fff;
+  border: 1px solid #000000;
+}
+
+/* Expandable sections styling - based on promptReview.js */
+.expandable-section {
+  margin-top: 0;
+  transition: all 0.3s ease;
+}
+
+/* Questions section styling - matching promptReview input sections */
+.questions-input-sections {
+  display: flex;
+  flex-direction: column;
+  color: #00547B;
+  height: auto;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.question-input-field {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 4px;
+}
+
+.question-label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #111827;
+}
+
+.question-input {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  background: #CDF6FE;
+  color: #333333;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.question-input:focus {
+  outline: none;
+  border-color: #00c2ff;
+  box-shadow: 0 0 0 3px rgba(0, 194, 255, 0.1);
+}
+
+/* Analysis section styling - matching promptReview metrics section */
+.analysis-metrics-section {
+  background: white;
+  height: auto;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.overall-strength-container {
+  display: flex;
+  align-items: center;
+  margin: 8px 4px;
+}
+
+.strength-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.strength-value {
+  margin-left: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #EAB308;
+}
+
+.combined-container {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Professional Metrics Display */
+.metrics-display {
+  width: 100%;
+  margin: 16px 0;
+  padding: 0;
+}
+
+.metrics-indicator-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 8px 0px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #000000;
+  width: 100%;
+  margin: 0;
+}
+
+.metric-indicator-wrapper {
+  display: flex;
+  height: 50px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: transparent;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.metric-indicator-wrapper:hover {
+  transform: translateY(-1px);
+}
+
+.metric-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.metric-circle-container {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.metric-svg {
+  width: 30px;
+  height: 30px;
+}
+
+.metric-value {
+  position: absolute;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1e293b;
+  z-index: 2;
+}
+
+/* Metric-specific value colors */
+.metric-indicator[data-metric="clarity"] .metric-value {
+  color: #22C55E;
+}
+
+.metric-indicator[data-metric="specificity"] .metric-value {
+  color: #EAB308;
+}
+
+.metric-indicator[data-metric="intent"] .metric-value {
+  color: #EAB308;
+}
+
+.metric-indicator[data-metric="depth"] .metric-value {
+  color: #EF4444;
+}
+
+.metric-label {
+  font-size: 9px;
+  margin-top: 2px;
+  color: #475569;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.recommendations-container {
+  padding: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.metric-header {
+  display: flex;
+  align-items: center;
+}
+
+.metric-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recommendations-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.recommendations-content {
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  position: relative;
+}
+
+.refine-prompt-button {
+  background-color: #00c8ed;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.refine-prompt-button:hover {
+  background-color: #00daff;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+.refine-prompt-button:active {
+  transform: translateY(2px);
+}
+
+/* Dark mode styles */
+body.dark-mode .questions-input-sections {
+  color: #ffffff;
+}
+
+body.dark-mode .question-label {
+  color: #ffffff;
+}
+
+body.dark-mode .question-input {
+  background: #183642;
+  color: #ffffff;
+  border-color: #3a464c;
+}
+
+body.dark-mode .question-input:focus {
+  border-color: #00c2ff;
+}
+
+body.dark-mode .analysis-metrics-section {
+  background: transparent;
+}
+
+body.dark-mode .strength-label {
+  color: #ffffff;
+}
+
+body.dark-mode .strength-value {
+  color: #EAB308;
+}
+
+body.dark-mode .combined-container {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode metrics */
+body.dark-mode .metrics-indicator-container {
+  background: #10242b;
+  border: 1px solid #000000;
+}
+
+body.dark-mode .metric-indicator-wrapper {
+  background: transparent;
+}
+
+body.dark-mode .metric-indicator-wrapper:hover {
+  background: transparent;
+}
+
+body.dark-mode .metric-circle-container {
+  background: #334155;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .metric-value {
+  color: #f1f5f9;
+}
+
+body.dark-mode .metric-label {
+  color: #cbd5e1;
+}
+
+body.dark-mode .recommendations-container {
+  border-top-color: rgb(0, 0, 0);
+  background: rgb(24 31 34)
+}
+
+body.dark-mode .recommendations-title {
+  color: #ffffff;
+}
+
+body.dark-mode .recommendations-content {
+  color: rgba(255, 255, 255, 0.7);
+}
+body.dark-mode .velocity-state-message-box[data-state="good"] .suggestion-content {
+  background-color: #183642;
+  color: #fff;
+  border: 1px solid #000000;
+}
+body.dark-mode .velocity-state-message-box[data-state="idleWithContent"] .suggestion-box {
+  background-color: #181f22;
+  color: #fff;
+}
+
+/* Feedback buttons for green state */
+.feedback-buttons-container {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.feedback-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  background-color: #F3F4F6;
+  color: #333333;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.feedback-button:hover {
+  background-color: #E5E7EB;
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
+.feedback-button:active {
+  transform: translateY(2px);
+}
+
+.feedback-button.selected {
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
+.feedback-button svg {
+  flex-shrink: 0;
+}
+
+/* Like button specific styles */
+.like-button:hover {
+  background-color: #22C55E;
+  color: white;
+}
+
+/* Dislike button specific styles */
+.dislike-button:hover {
+  background-color: #EF4444;
+  color: white;
+}
+
+/* Dark mode feedback buttons */
+body.dark-mode .feedback-button {
+  background-color: #2a363c;
+  color: #ffffff;
+  border: 1px solid #3a464c;
+}
+
+body.dark-mode .feedback-button:hover {
+  background-color: #3a464c;
+}
+
+body.dark-mode .like-button:hover {
+  background-color: #22C55E;
+  color: white;
+}
+
+body.dark-mode .dislike-button:hover {
+  background-color: #EF4444;
+  color: white;
+}
+
+/* Prompt history link styling */
+.prompt-history-link {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #666666;
+}
+
+.prompt-history-link a.profile-link {
+  color: #00c8ed;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.prompt-history-link a.profile-link:hover {
+  color: #00daff;
+  text-decoration: underline;
+}
+
+/* Dark mode prompt history link */
+body.dark-mode .prompt-history-link {
+  color: #cbd5e1;
+}
+
+body.dark-mode .prompt-history-link a.profile-link {
+  color: #00c8ed;
+}
+
+body.dark-mode .prompt-history-link a.profile-link:hover {
+  color: #00daff;
+}
+
+/* Empty input validation message - fade effect */
+.empty-input-validation {
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.empty-input-validation.fade-out {
+  opacity: 0;
+}
+
+/* Empty input validation message - dark mode support */
+body.dark-mode .empty-input-validation {
+  background-color: #1F1F1F !important;
+  color: #FCD34D !important;
+  border-left: 3px solid #F59E0B !important;
+}
+
+/* Cursor changes for suggestion selection mode */
+.suggestion-box.suggestion-clickable {
+  cursor: pointer;
+}
+
+.suggestion-box.suggestion-clickable:hover {
+  cursor: pointer;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+/* Dark mode hover effects */
+body.dark-mode .suggestion-box.suggestion-clickable:hover {
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure non-clickable suggestions don't have pointer cursor */
+.suggestion-box:not(.suggestion-clickable) {
+  cursor: default;
+}
+
+/* Empty input validation message should not have pointer cursor */
+.empty-input-validation {
+  cursor: default !important;
+}
+
+/* Loader animations for API calls */
+.loader {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #00c8ed;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+.loader-small {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #00c8ed;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Question text styling */
+.question-text {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 5px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Dark mode loader styles */
+body.dark-mode .loader {
+  border: 3px solid #333;
+  border-top: 3px solid #00c8ed;
+}
+
+body.dark-mode .loader-small {
+  border: 2px solid #333;
+  border-top: 2px solid #00c8ed;
+}
+
+body.dark-mode .question-text {
+  color: #ccc;
+}
+
+/* Recommendation and questions content styling */
+.recommendation-content,
+.questions-content {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.recommendation-error,
+.questions-error {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Button disabled state */
+.refine-prompt-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.refine-prompt-button:disabled:hover {
+  background-color: #00c8ed !important;
+  transform: none !important;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Positioning-specific styles */
+.velocity-state-message-box {
+  max-width: 300px;
+  min-height: auto;
+  max-height: 80vh; /* Allow up to 80% of viewport height */
+  overflow-y: auto; /* Only show scroll if content exceeds 80% of viewport */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  /* Ensure smooth transitions when repositioning */
+  transition: top 0.2s ease-out, left 0.2s ease-out;
+}
+
+/* Ensure message box is responsive to different positions */
+.velocity-state-message-box .message-content {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Adjust arrow/pointer styles for different positions */
+.velocity-state-message-box::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  z-index: 1;
+}
+
+/* Arrow pointing right (when positioned on left) */
+.velocity-state-message-box[data-position="left"]::before {
+  top: 20px;
+  right: -8px;
+  border-width: 8px 0 8px 8px;
+  border-color: transparent transparent transparent #ffffff;
+}
+
+/* Arrow pointing left (when positioned on right) */
+.velocity-state-message-box[data-position="right"]::before {
+  top: 20px;
+  left: -8px;
+  border-width: 8px 8px 8px 0;
+  border-color: transparent #ffffff transparent transparent;
+}
+
+/* Arrow pointing down (when positioned on top) */
+.velocity-state-message-box[data-position="top"]::before {
+  bottom: -8px;
+  left: 20px;
+  border-width: 8px 8px 0 8px;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+/* Arrow pointing up (when positioned on bottom) */
+.velocity-state-message-box[data-position="bottom"]::before {
+  top: -8px;
+  left: 20px;
+  border-width: 0 8px 8px 8px;
+  border-color: transparent transparent #ffffff transparent;
+}
+
+/* Dark mode arrow adjustments */
+body.dark-mode .velocity-state-message-box[data-position="left"]::before {
+  border-color: transparent transparent transparent #2d2d2d;
+}
+
+body.dark-mode .velocity-state-message-box[data-position="right"]::before {
+  border-color: transparent #2d2d2d transparent transparent;
+}
+
+body.dark-mode .velocity-state-message-box[data-position="top"]::before {
+  border-color: #2d2d2d transparent transparent transparent;
+}
+
+body.dark-mode .velocity-state-message-box[data-position="bottom"]::before {
+  border-color: transparent transparent #2d2d2d transparent;
+}
+
+/* Loading animations for the refine-prompt-button */
+.refine-prompt-button.loading {
+  position: relative;
+  cursor: wait !important;
+  opacity: 0.8;
+}
+
+.refine-prompt-button.loading .loader-small {
+  margin-right: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Ensure the button maintains its style while loading */
+.refine-prompt-button.loading:hover {
+  background-color: #00c8ed;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+/* Ensure the loading animation is visible in dark mode */
+body.dark-mode .refine-prompt-button.loading .loader-small {
+  border: 2px solid #333;
+  border-top: 2px solid #00c8ed;
+}
+
+/* Success state for the refine-prompt-button */
+.refine-prompt-button.success {
+  background-color: #22C55E !important;
+  color: white !important;
+  cursor: default;
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+
+/* Dark mode success state */
+body.dark-mode .refine-prompt-button.success {
+  background-color: #16A34A !important;
+  color: white !important;
+}
+
+/* Improved visibility for the loader elements */
+.loader-small {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top: 2px solid #00c8ed;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}

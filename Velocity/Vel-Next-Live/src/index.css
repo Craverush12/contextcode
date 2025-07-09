@@ -1,0 +1,560 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https: //fonts.google.com/specimen/Space+Grotesk?preview.size=49&categoryFilters=Appearance:%2FTheme%2FTechno');
+@import url('https: //fonts.google.com/specimen/DM+Sans');
+/* Add the @font-face rule here in your global CSS file */
+@font-face {
+  font-family: 'Amenti';
+  src: url('/fonts/Amenti Regular.ttf') format('truetype'),
+       url('/fonts/Amenti Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: "DM Sans";
+    src: url('/fonts/DMSans-VariableFont_opsz,wght.ttf') format('truetype');
+    font-optical-sizing: auto;
+    font-weight: 100 900; /* Variable font supports weight range */
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/Switzer-Regular.otf') format('opentype'),
+       url('/fonts/Switzer-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+canvas{
+  /* height: 200px; */
+  width: 500px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection{
+  background-color:#008ACB52;
+  color: var(--text-primary)
+}
+
+/* Target autofill for input elements */
+input:-webkit-autofill {
+  background-color: black !important;
+  -webkit-box-shadow: 0 0 0px 1000px black inset !important;
+  -webkit-text-fill-color: white !important;
+}
+
+input:-webkit-autofill:focus {
+  background-color: black !important;
+  -webkit-box-shadow: 0 0 0px 1000px black inset !important;
+  -webkit-text-fill-color: white !important;
+}
+
+input:-webkit-autofill:hover {
+  background-color: black !important;
+  -webkit-box-shadow: 0 0 0px 1000px black inset !important;
+  -webkit-text-fill-color: white !important;
+}
+
+
+/* Add the custom gradient class */
+.bg-gradient-text {
+  background: linear-gradient(to right, #DADADA, #999999);
+  background-clip: text;
+  -webkit-background-clip: text; /* For Safari */
+  color: transparent; /* Make text color transparent to reveal the gradient */
+}
+
+.bg-gradient-blue {
+  background: linear-gradient(to right, #32a9df, #6ACFFF);
+  background-clip: text;
+  -webkit-background-clip: text; /* For Safari */
+  color: transparent; /* Make text color transparent to reveal the gradient */
+}
+
+.bg-gradient-premium {
+  background: linear-gradient(to right, #B78629, #FCC101);
+  background-clip: text;
+  -webkit-background-clip: text; /* For Safari */
+  color: transparent; /* Make text color transparent to reveal the gradient */
+}
+
+/* You can now use the custom font in your CSS */
+
+/* DM Sans utility classes */
+.font-dm-sans {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.font-dm-sans-light {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+}
+
+.font-dm-sans-regular {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+}
+
+.font-dm-sans-medium {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+}
+
+.font-dm-sans-semibold {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+}
+
+.font-dm-sans-bold {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background: #000;
+}
+
+@layer base {
+  :root {
+    --bg-primary: #000000;
+    --text-primary: #ffffff;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@keyframes borderGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 149, 255, 0.5),
+                0 0 10px rgba(0, 149, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(0, 149, 255, 0.9),
+                0 0 20px rgba(0, 149, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(0, 149, 255, 0.5),
+                0 0 10px rgba(0, 149, 255, 0.3);
+  }
+}
+
+.glowing-button {
+  position: relative;
+  padding: 20px 25px;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #0095ff;
+  border-radius: 50px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  animation: borderGlow 2s infinite;
+  font-family: Inter;
+}
+
+.glowing-button:hover {
+  background-color: rgba(0, 149, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 149, 255, 0.8),
+              0 0 30px rgba(0, 149, 255, 0.6);
+  transform: scale(1.05);
+}
+
+.glowing-whitebutton {
+  position: relative;
+  background-color: #e2e2e2;
+  color: #fff;
+  border: 1px solid #ffffff;
+  border-radius: 50px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  animation: borderGlowWhite 2s infinite;
+  font-family: Inter;
+}
+
+.glowing-whitebutton:hover {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+              0 0 30px rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+
+@keyframes borderGlowWhite {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+                0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9),
+                0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+                0 0 10px rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.navbtn {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbtn .inner {
+  position: relative;
+  z-index: 1;
+  margin: 2px;
+  width: 100%;
+}
+
+
+.navbtn::before {
+  content: "";
+  display: block;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(194, 194, 194, 0.75) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  height: 300px;
+  width: 60px;
+  transform: translate(0);
+  position: absolute;
+  animation: rotate 5s linear forwards infinite;
+  z-index: 0;
+  top: 50%;
+  transform-origin: top center;
+  transition: shine 3s infinite linear;
+}
+
+.trybtn::before{
+  background: linear-gradient(
+    90deg,
+    rgba(0, 69, 101, 1) 0%,
+    rgb(0, 138, 203) 50%,
+    rgba(0, 69, 101, 1) 100%
+  );
+  width: 50px;
+}
+
+@keyframes shine {
+  0% {left: -100px}
+  20% {left: 100%}
+  100% {left: 100%}
+}
+
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-reverse {
+  animation: scroll var(--speed) linear infinite;
+}
+
+.image img {
+  /* max-width: 421px;
+  height: 421px; */
+  object-fit: cover;
+  border-radius: 40px;
+  margin-right: 24px;
+}
+
+@keyframes swipeleft {
+  0% {
+    transform: translate(-100%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes swiperight {
+  0% {
+    transform: translate(0%);
+  }
+
+  100% {
+    transform: translate(-100%);
+  }
+}
+
+.inner1 {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: auto;
+  min-height: 200px;
+}
+
+@media (min-width: 640px) {
+  .inner1 {
+    min-height: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .inner1 {
+    min-height: 350px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .inner1 {
+    min-height: 421px;
+  }
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll {
+  animation: scroll var(--speed) linear infinite;
+  display: flex;
+  will-change: transform;
+}
+
+.animate-scroll-reverse {
+  animation: scroll-reverse var(--speed) linear infinite;
+  display: flex;
+  will-change: transform;
+}
+
+/* Pause animation on hover */
+/* .wrapper:hover section {
+  animation-play-state: paused;
+} */
+
+/* Ensure smooth animation on mobile */
+@media (hover: none) {
+  .animate-scroll,
+  .animate-scroll-reverse {
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 100%;
+  }
+  25% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Keyframes for bouncing the icon */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0); /* Default position */
+  }
+  50% {
+    transform: translateY(5px); /* Move up */
+  }
+}
+
+@keyframes circleSlideUp {
+  from {
+    transform: translateY(70px); /* Start from below */
+    opacity: 0; /* Optional fade-in effect */
+  }
+  to {
+    transform: translateY(0); /* End at the original position */
+    opacity: 1;
+  }
+}
+
+
+/* Apply the animation on hover */
+button:hover .chevron-icon {
+  animation: bounce 0.6s ease-in-out infinite;
+}
+
+
+.animate-gradient-move {
+  animation: gradient-move 60s linear infinite alternate;
+  background-position: 0% 0%;
+  background-size: 200% 200%;
+}
+
+
+@media screen and (max-width: 768px) {
+  .glowing-button{
+    padding: 12px 45px;
+  }
+  .image img {
+    max-width: 380px;
+    margin-right: 15px;
+  }
+  .inner1 {
+    height: 25rem;
+  }
+
+  canvas{
+    height: 200px;
+  }
+
+  @keyframes circleSlideUp {
+    from {
+      transform: translateY(30px); /* Start from below */
+      opacity: 0; /* Optional fade-in effect */
+    }
+    to {
+      transform: translateY(0); /* End at the original position */
+      opacity: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .inner1 {
+    height: 13rem;
+  }
+}
+
+@media screen and (min-width: 712px) and (max-width: 1138px) {
+  .gradient-bottom {
+    bottom: 6rem !important; /* bottom-20 in Tailwind */
+    height: 8rem !important; /* h-32 in Tailwind */
+  }
+}
+
+@media screen and (min-width: 853px) and (max-width: 1280px) {
+  .gradient-bottom {
+    bottom: 0rem !important; /* bottom-20 in Tailwind */
+    height: 8rem !important; /* h-32 in Tailwind */
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+

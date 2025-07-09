@@ -1,0 +1,85 @@
+1:"$Sreact.fragment"
+3:I[9243,["177","static/chunks/app/layout-e01a1b338f005994.js"],""]
+4:I[2073,["177","static/chunks/app/layout-e01a1b338f005994.js"],"default"]
+5:I[7555,[],""]
+6:I[1295,[],""]
+7:I[6063,["177","static/chunks/app/layout-e01a1b338f005994.js"],"GoogleTagManager"]
+8:I[894,[],"ClientPageRoot"]
+9:I[1863,["766","static/chunks/766-124e60e8396b6ea4.js","620","static/chunks/620-5a488230b99a14f0.js","150","static/chunks/150-14f7e897f2644a69.js","566","static/chunks/app/onboarding/page-f2570ab9a2051439.js"],"default"]
+c:I[9665,[],"OutletBoundary"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[9665,[],"MetadataBoundary"]
+13:I[6614,[],""]
+:HL["/_next/static/media/a34f9d1faa5f3315-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/e06116dd2d0423b5.css","style"]
+2:Tbff,
+              {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                "name": "Velocity: The Prompt Co-Pilot",
+                "url": "https://thinkvelocity.in/",
+                "description": "AI Prompt Co-Pilot for LLMs – Optimize Prompts for Smarter, Faster Results Instantly! This ultimate Prompt Co-Pilot turns unclear instructions into optimized, AI-ready prompts in one click. Perfect for students, professionals, and creators.",
+                "applicationCategory": "Productivity",
+                "applicationSubCategory": "Prompt Enhancement",
+                "featureList": ["AI Prompt Optimization", "Creative Writing", "Content Generation"],
+                "operatingSystem": "All",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0.00",
+                  "priceCurrency": "USD"
+                },
+                "sameAs": [
+                  "https://linktr.ee/thinkvelocity",
+                  "https://www.producthunt.com/products/velocity-prompt-co-pilot",
+                  "https://chromewebstore.google.com/detail/velocity-the-prompt-co-pi/ggiecgdncaiedmdnbmgjhpfniflebfpa",
+                  "https://www.instagram.com/thinkvelocity/"
+                ],
+                "mainEntityOfPage": {
+                  "@type": "WebPage",
+                  "hasPart": [
+                    {
+                      "@type": "WebPage",
+                      "name": "Try For Free",
+                      "description": "Try it For Free",
+                      "url": "https://thinkvelocity.in/#promptBoxRef"
+                    },
+                    {
+                      "@type": "WebPage",
+                      "name": "How It Works",
+                      "description": "Discover how Velocity optimizes your prompts",
+                      "url": "https://thinkvelocity.in/#howItWorks"
+                    },
+                    {
+                      "@type": "WebPage",
+                      "name": "Built For",
+                      "description": "See who can benefit from Velocity",
+                      "url": "https://thinkvelocity.in/#builtFor"
+                    },
+                    {
+                      "@type": "WebPage",
+                      "name": "Privacy Policy",
+                      "description": "Our privacy commitments",
+                      "url": "https://thinkvelocity.in/privacypolicy"
+                    },
+                    {
+                      "@type": "WebPage",
+                      "name": "Get Started",
+                      "description": "Access your Velocity account",
+                      "url": "https://thinkvelocity.in/login"
+                    },
+                    {
+                      "@type": "WebPage",
+                      "name": "Patch Notes",
+                      "description": "Latest updates and features",
+                      "url": "https://thinkvelocity.in/#ReleaseNotes"
+                    }
+                  ]
+                }
+              }
+            0:{"P":null,"b":"2w-P0OvxFC6pUnrcWgcRN","p":"","c":["","onboarding"],"i":false,"f":[[["",{"children":["onboarding",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e06116dd2d0423b5.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","$L3",null,{"src":"https://checkout.razorpay.com/v1/checkout.js","strategy":"lazyOnload"}],["$","noscript",null,{"children":["$","nav",null,{"aria-label":"Site Navigation","style":{"position":"absolute","width":"1px","height":"1px","padding":0,"margin":"-1px","overflow":"hidden","clip":"rect(0, 0, 0, 0)","whiteSpace":"nowrap","border":0},"children":["$","ul",null,{"children":[["$","li",null,{"children":["$","a",null,{"href":"https://thinkvelocity.in/#home","children":"Home"}]}],["$","li",null,{"children":["$","a",null,{"href":"https://thinkvelocity.in/#howItWorks","children":"How It Works"}]}],["$","li",null,{"children":["$","a",null,{"href":"https://thinkvelocity.in/#builtFor","children":"Built For"}]}],["$","li",null,{"children":["$","a",null,{"href":"https://thinkvelocity.in/#ReleaseNotes","children":"Release Notes"}]}],["$","li",null,{"children":["$","a",null,{"href":"https://thinkvelocity.in/privacypolicy","children":"Privacy Policy"}]}],["$","li",null,{"children":["$","a",null,{"href":"https://thinkvelocity.in/login","children":"Login"}]}],["$","li",null,{"children":["$","a",null,{"href":"https://thinkvelocity.in/#promptBoxRef","children":"Try For Free"}]}]]}]}]}],["$","title",null,{"children":"Velocity: The Prompt Co-Pilot"}],["$","meta",null,{"name":"description","content":"Velocity: The Prompt Co-Pilot - AI Prompt Co-Pilot for LLMs – Optimize Prompts for Smarter, Faster Results Instantly! Make AI work smarter for you! This ultimate Prompt Co-Pilot turns unclear instructions into optimized, AI-ready prompts in one click. Perfect for students, professionals, and creators to boost productivity up to 30%. Try for Free on Chrome Web Store."}],["$","meta",null,{"name":"keywords","content":"Velocity AI, Velocity Prompt Co-Pilot, Prompt Optimizer, One-Click AI, Think Velocity, Prompt Engineering, AI Efficiency, AI Productivity, Time-Saving AI, Boost Creative Productivity, Best AI Prompt Tool, One-Click Prompt Generator, How to Optimize AI Prompts for Faster Results, ChatGPT Prompts"}],["$","meta",null,{"name":"author","content":"ThinkVelocity Team"}],["$","meta",null,{"name":"robots","content":"index, follow"}],["$","meta",null,{"property":"og:title","content":"Velocity: The Prompt Co-Pilot"}],["$","meta",null,{"property":"og:description","content":"AI-powered Prompt Co-Pilot for LLMs – Optimize prompts instantly! Boost productivity by 30% with one-click optimization. Try for free on Chrome Web Store."}],["$","meta",null,{"property":"og:type","content":"website"}],["$","meta",null,{"property":"og:url","content":"https://thinkvelocity.in/"}],["$","meta",null,{"property":"og:image","content":"https://thinkvelocity.in/Chrome_Store_Listing.jpg"}],["$","meta",null,{"property":"og:image:width","content":1200}],["$","meta",null,{"property":"og:image:height","content":630}],["$","meta",null,{"name":"twitter:card","content":"summary_large_image"}],["$","meta",null,{"name":"twitter:title","content":"Velocity: The Prompt Co-Pilot"}],["$","meta",null,{"name":"twitter:description","content":"AI-powered Prompt Co-Pilot for LLMs – Optimize prompts instantly! Boost productivity by 30% with one-click optimization. Try for free on Chrome Web Store."}],["$","meta",null,{"name":"twitter:image","content":"https://thinkvelocity.in/src/assets/Velocity_SEO_Logo.png"}],["$","link",null,{"rel":"icon","href":"/assets/logo_new-B1ojKN9h.png"}],["$","link",null,{"rel":"shortcut icon","href":"/assets/favicon-KB9OwGjD.ico"}],["$","link",null,{"rel":"apple-touch-icon","href":"/assets/logo_new-B1ojKN9h.png"}],["$","link",null,{"rel":"canonical","href":"https://thinkvelocity.in/"}]]}],["$","body",null,{"className":"__className_d65c78 bg-primary overflow-y-auto","children":[["$","noscript",null,{"children":["$","iframe",null,{"src":"https://www.googletagmanager.com/ns.html?id=GTM-WHQ2J4J7","height":"0","width":"0","style":{"display":"none","visibility":"hidden"}}]}],["$","$L4",null,{}]," ",["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],["$","$L7",null,{"gtmId":"GTM-WHQ2J4J7"}]]}]]}],{"children":["onboarding",["$","$1","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L8",null,{"Component":"$9","searchParams":{},"params":{},"promises":["$@a","$@b"]}],"$undefined",null,["$","$Lc",null,{"children":["$Ld","$Le",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","Q9OU9KKUQoZd9dnK0AMox",{"children":[["$","$Lf",null,{"children":"$L10"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$L11",null,{"children":"$L12"}]]}],false]],"m":"$undefined","G":["$13","$undefined"],"s":false,"S":true}
+a:{}
+b:{}
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+d:null
+e:null
+12:[["$","title","0",{"children":"Velocity: The Prompt Co-Pilot"}],["$","meta","1",{"name":"description","content":"Velocity: The Prompt Co-Pilot - AI Prompt Co-Pilot for LLMs – Optimize Prompts for Smarter, Faster Results Instantly! Make AI work smarter for you! This ultimate Prompt Co-Pilot turns unclear instructions into optimized, AI-ready prompts in one click. Perfect for students, professionals, and creators to boost productivity up to 30%. Try for Free on Chrome Web Store."}],["$","meta","2",{"name":"author","content":"ThinkVelocity Team"}],["$","meta","3",{"name":"keywords","content":"Velocity AI, Velocity Prompt Co-Pilot, Prompt Optimizer, One-Click AI, Think Velocity, Prompt Engineering, AI Efficiency, AI Productivity, Time-Saving AI, Boost Creative Productivity, Best AI Prompt Tool, One-Click Prompt Generator, How to Optimize AI Prompts for Faster Results, ChatGPT Prompts"}],["$","meta","4",{"name":"robots","content":"index, follow"}],["$","link","5",{"rel":"canonical","href":"https://thinkvelocity.in/"}],["$","meta","6",{"property":"og:title","content":"Velocity: The Prompt Co-Pilot"}],["$","meta","7",{"property":"og:description","content":"AI-powered Prompt Co-Pilot for LLMs – Optimize prompts instantly! Boost productivity by 30% with one-click optimization. Try for free on Chrome Web Store."}],["$","meta","8",{"property":"og:url","content":"https://thinkvelocity.in/"}],["$","meta","9",{"property":"og:image","content":"https://thinkvelocity.in/Chrome_Store_Listing.jpg"}],["$","meta","10",{"property":"og:image:width","content":"1200"}],["$","meta","11",{"property":"og:image:height","content":"630"}],["$","meta","12",{"property":"og:type","content":"website"}],["$","meta","13",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","14",{"name":"twitter:title","content":"Velocity: The Prompt Co-Pilot"}],["$","meta","15",{"name":"twitter:description","content":"AI-powered Prompt Co-Pilot for LLMs – Optimize prompts instantly! Boost productivity by 30% with one-click optimization. Try for free on Chrome Web Store."}],["$","meta","16",{"name":"twitter:image","content":"https://thinkvelocity.in/src/assets/Velocity_SEO_Logo.png"}],["$","link","17",{"rel":"shortcut icon","href":"/assets/favicon-KB9OwGjD.ico"}],["$","link","18",{"rel":"icon","href":"/assets/logo_new-B1ojKN9h.png"}],["$","link","19",{"rel":"apple-touch-icon","href":"/assets/logo_new-B1ojKN9h.png"}]]

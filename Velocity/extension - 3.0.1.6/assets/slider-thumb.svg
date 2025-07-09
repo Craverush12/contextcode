@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Slider Thumb</title>
+    <g id="Slider-Thumb" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Background" fill="#00C8ED" cx="12" cy="12" r="10"></circle>
+        <circle id="Border" stroke="#000000" stroke-width="2" cx="12" cy="12" r="11"></circle>
+        <path d="M12,6 L12,18" id="Line" stroke="#000000" stroke-width="2" stroke-linecap="round"></path>
+        <path d="M6,12 L18,12" id="Line-2" stroke="#000000" stroke-width="2" stroke-linecap="round"></path>
+    </g>
+</svg>

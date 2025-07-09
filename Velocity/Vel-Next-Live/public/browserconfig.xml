@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <msapplication>
+        <tile>
+            <square150x150logo src="https://thinkvelocity.in/next-assets/VEL_LOGO2.png"/>
+            <square310x310logo src="https://thinkvelocity.in/next-assets/VEL_LOGO2.png"/>
+            <wide310x150logo src="https://thinkvelocity.in/next-assets/61.png"/>
+            <TileColor>#6366f1</TileColor>
+        </tile>
+    </msapplication>
+</browserconfig> 

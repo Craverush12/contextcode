@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI Prompt Enhancement Tool">
+  <title>Extension Popup</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js/minified/introjs.min.css">
+  <link rel="stylesheet" href="src/output.css">
+  <link rel="stylesheet" href="phase1.css">
+
+  <!-- Import Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Header Section -->
+    <header class="title1 flex justify-between items-center">
+      <div class="mleft flex items-center gap-4">
+        <button type="button" id="infoButton" class="flex items-center text-white" aria-label="Tutorial Info">
+          <img src="./assets/infoButton.png" alt="Tutorial icon" class="mode-icon h-5 w-5">
+        </button>
+        <button type="button" id="darkModeToggle" class="flex items-center text-white" aria-label="Toggle Dark Mode">
+          <img src="./assets/infoButton.png" alt="Dark mode icon" class="mode-icon h-5 w-5">
+        </button>
+        <button type="button" id="settingsButton" class="flex items-center text-white" aria-label="Settings">
+          <img src="./assets/setting.png" alt="Settings icon" class="mode-icon h-5 w-5" data-darkmode-src="./assets/settings-icon-darkmode.png">
+        </button>
+      </div>
+
+      <div class="flex items-center gap-2 pr-2" id="loginMessage">
+        <!-- <a href="https://thinkvelocity.in/profile?source=pricing_page" target="_blank" rel="noopener noreferrer">
+        <button type="button" id="editButton" class="credits-button" aria-label="Credits">
+            <img class="coinicon" src="./assets/Tokens.png" alt="coin">
+            <span class="credit-amount"></span>
+          </button>
+        </a> -->
+        <div class="small-toggle" title="Toggle Feature">
+          <input type="checkbox" id="toggleButton" class="toggle-input" aria-label="Toggle Feature">
+          <div class="toggle-slider-small" aria-hidden="true"></div>
+        </div>
+        <div id="loginStatusIndicator" class="login-status-indicator" style="display: none;">
+          <span class="status-text">Login</span>
+        </div>
+        <button type="button" id="signupButton" aria-label="Profile" data-intro="Access your profile and settings here" data-step="7">
+          <img class="profileicon" src="./assets/AI_robot.png" alt="Profile">
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Prompt Entry View -->
+      <section class="main-content" id="mainContent">
+        <h2 class="needs">Enhance your prompt</h2>
+
+        <div class="scrollable-container">
+          <!-- Step 1: Prompt Input -->
+          <div class="input-container" data-intro="Step 1: Enter your prompt here." data-step="1">
+            <textarea
+              id="promptInput"
+              class="prompt-input"
+              placeholder="Type your prompt here—Velocity will pick the best AI model for you and take you there."
+              aria-label="Prompt input area"
+            ></textarea>
+          </div>
+
+          <!-- Step 3: Style Selection - These are the style buttons we want to redesign -->
+          <div data-intro="Step 3: Select the tone style for your output." data-step="3">
+            <h2 class="needs">Select your tone</h2>
+            <!-- Style buttons container - 2x2 grid layout -->
+            <div class="button-group" role="radiogroup" aria-labelledby="tone-selection">
+              <!-- STYLE BUTTON: Descriptive -->
+              <div class="tone-option">
+                <input type="radio" name="style-option" id="descriptive">
+                <label for="descriptive" class="tone-label">
+                  <!-- Top row with icon and title -->
+                  <div class="tone-header">
+                    <span class="tone-title">Descriptive</span>
+                  </div>
+                  <!-- Description centered below -->
+                </label>
+              </div>
+
+              <!-- STYLE BUTTON: Creative -->
+              <div class="tone-option">
+                <input type="radio" name="style-option" id="creative">
+                <label for="creative" class="tone-label">
+                  <!-- Top row with icon and title -->
+                  <div class="tone-header">
+                    <span class="tone-title">Creative</span>
+                  </div>
+                </label>
+              </div>
+
+              <!-- STYLE BUTTON: Professional -->
+              <div class="tone-option">
+                <input type="radio" name="style-option" id="professional">
+                <label for="professional" class="tone-label">
+                  <!-- Top row with icon and title -->
+                  <div class="tone-header">
+                    <span class="tone-title">Professional</span>
+                  </div>
+                </label>
+              </div>
+
+              <!-- STYLE BUTTON: Concise -->
+              <div class="tone-option">
+                <input type="radio" name="style-option" id="concise">
+                <label for="concise" class="tone-label">
+                  <!-- Top row with icon and title -->
+                  <div class="tone-header">
+                    <span class="tone-title">Concise</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Generate Button -->
+        <div class="flex flex-col items-center mt-6" id="generateButtonContainer" data-intro="Step 4: Click generate to get results." data-step="4">
+          <button type="button" id="sendButton" class="generate-button flex items-center justify-center gap-2" aria-label="Generate enhanced prompts">
+            <span>Generate</span>
+          </button>
+          <!-- <div class="info-box" id="infoBox">
+            <p>Velocity finds the best AI platform for your prompt and will redirect you.</p>
+          </div> -->
+        </div>
+      </section>
+
+      <!-- Results View -->
+      <section class="responses-wrapper hidden" id="responsesWrapper">
+        <div class="responses-header">
+          <h2>Your prompt is ready!</h2>
+        </div>
+        <ul class="responses-grid">
+          <!-- Responses will be dynamically inserted here -->
+        </ul>
+        <!-- Bottom Controls Container -->
+        <div class="bottom-action-bar flex flex-col">
+          <!-- Left side - Back arrow button and Copy button -->
+          <div class="flex justify-between w-full">
+            <div class="left-actions">
+              <button type="button" id="backToInput" class="action-button" aria-label="Return to prompt input">
+                <img src="./assets/back-arrow.png" alt="Back" class="button-icon back-arrow-icon" data-darkmode-src="./assets/back-arrow-darkmode.png">
+              </button>
+              <button type="button" id="copyResponseButton" class="action-button" aria-label="Copy response">
+                <img src="./assets/copy-icon.png" alt="Copy" class="button-icon copy-icon" data-darkmode-src="./assets/copy-icon-darkmode.png">
+              </button>
+            </div>
+            <div class="left-actions">
+              <button type="button" id="likeButton" class="action-button" aria-label="Like response">
+                <img src="./assets/LikeButton.png" alt="like" class="button-icon" data-darkmode-src="./assets/DarkmodeLikeButton.png">
+              </button>
+              <button type="button" id="dislikeButton" class="action-button" aria-label="Dislike response">
+                <img src="./assets/DislikeButton.png" alt="dislike" class="button-icon" data-darkmode-src="./assets/DarkmodeDislikeButton.png">
+              </button>
+            </div>
+          </div>
+          <!-- Right side - LLM Selection Dropdown -->
+           <div class="flex justify-between w-full">
+            <button type="button" id="insertButton" class="Insert-button" aria-label="Insert response">Insert here</button>
+            <div class="platform-selector-container">
+              <div class="platform-selector">
+                <span class="open-in-text">Open in</span>
+                <div class="platform-name">
+                  <img src="./assets/Chatgpt-icon.png" alt="ChatGPT" class="platform-icon">
+                  <span>Chat GPT</span>
+                  <img src="./assets/downarrow.png" alt="Open LLM selection" class="dropdown-arrow">
+                </div>
+                <button type="button" id="openInPlatformButton" class="send-button" aria-label="Send to LLM">
+                  <img src="./assets/send-arrow.png" alt="Open LLM selection" class="dropdown-arrow send-arrow-icon" data-darkmode-src="./assets/send-arrow-darkmode.png">
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings View -->
+      <section class="settings-wrapper hidden" id="settingsWrapper">
+        <div class="settings-header">
+          <h2>Customize</h2>
+        </div>
+        <div class="settings-content">
+          <!-- Word Count Slider -->
+          <div class="setting-group">
+            <label for="wordCountSlider">Word Count</label>
+            <div class="word-count-container">
+              <div class="slider-container">
+                <input
+                  type="range"
+                  id="wordCountSlider"
+                  class="word-count-slider"
+                  min="50"
+                  max="500"
+                  step="50"
+                  value="150"
+                >
+                <div class="word-count-display">150 words</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom Instructions -->
+          <div class="setting-group">
+            <label for="customInstructions">Custom Instructions</label>
+            <textarea
+              id="customInstructions"
+              class="custom-message"
+              placeholder="Add your custom instructions here..."
+            ></textarea>
+          </div>
+
+          <!-- Template and Language Selectors -->
+          <div class="setting-group selectors-row">
+            <div class="selector-column">
+              <label for="templateSelector">Template</label>
+              <select id="templateSelector" class="template-selector">
+                <option value="" selected>Select templates...</option>
+                <option value="marketing">Marketing</option>
+                <option value="academic">Academic</option>
+                <option value="technical">Technical</option>
+                <option value="creative">Creative</option>
+                <option value="business">Business</option>
+              </select>
+            </div>
+            <div class="selector-column">
+              <label for="languageSelector">Language</label>
+              <select id="languageSelector" class="template-selector">
+                <option value="english">English</option>
+                <option value="french">French</option>
+                <option value="spanish">Spanish</option>
+                <option value="german">German</option>
+                <option value="italian">Italian</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Additional Settings Section (Hidden by default) -->
+          <div id="additionalSettingsSection" class="additional-settings-section hidden">
+            <div class="selectors-row">
+              <!-- Complexity Level -->
+              <div class="setting-group selector-column">
+                <label>Complexity Level</label>
+                <select id="complexitySelector" class="template-selector">
+                  <option value="" selected>Select complexity level...</option>
+                  <option value="simple">Simple - Basic vocabulary and straightforward concepts</option>
+                  <option value="moderate">Moderate - Balanced complexity for general audience</option>
+                  <option value="advanced">Advanced - Sophisticated language and deeper analysis</option>
+                  <option value="expert">Expert - Specialized terminology and comprehensive depth</option>
+                </select>
+              </div>
+
+              <!-- Output Format -->
+              <div class="setting-group selector-column">
+                <label>Output Format</label>
+                <select id="formatSelector" class="template-selector">
+                  <option value="" selected>Select output format...</option>
+                  <option value="paragraphs">Paragraphs</option>
+                  <option value="bulletPoints">Bullet Points</option>
+                  <option value="numberedList">Numbered List</option>
+                  <option value="table">Table</option>
+                  <option value="qaFormat">Q&A Format</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="settings-actions">
+            <button type="button" id="additionalSettingButton" class="additional-setting-button">Additional Setting</button>
+            <button type="button" id="applySettingsButton" class="apply-settings-button">Apply</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="analytics/mixpanel.min.js" defer></script>
+  <script src="analytics/mixpanel-init.js" defer></script>
+  <script src="src/into.min.js" defer></script>
+  <script src="stateManager.js" defer></script>
+  <script src="promptInjectionManager.js" defer></script>
+  <script src="popup.js" defer></script>
+  <script src="content-script.js" defer></script>
+  <script src="phase1.js" defer></script>
+  <script src="settings/settings.js" defer></script>
+  <script src="inputQualityAnalyzer.js"></script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,124 @@
+  {
+    "manifest_version": 3,
+    "name": "Velocity: The Prompt Co-Pilot",
+    "version": "3.0.1.6",
+    "description": "AI Prompt Co-Pilot for LLMs – Optimize Prompts for Smarter, Faster Results Instantly!",
+    "permissions": ["activeTab", "storage", "tabs", "scripting", "notifications"],
+    "host_permissions": [
+      "https://chat.openai.com/*",
+      "https://chatgpt.com/*",
+      "https://claude.ai/*",
+      "https://thinkvelocity.in/*",
+      "https://gemini.google.com/*",
+      "https://grok.com/*",
+      "https://bolt.new/*",
+      "https://v0.dev/*",
+      "https://gamma.app/*",
+      "https://chat.mistral.ai/*",
+      "https://mistral.ai/*",
+      "https://lovable.dev/*",
+      "https://replit.com/*"
+    ],
+    "action": {
+      "default_popup": "phase1.html"
+    },
+    "icons": {
+      "16": "assets/icon16.png",
+      "32": "assets/icon32.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://chat.openai.com/*",
+          "https://chatgpt.com/*",
+          "https://claude.ai/*",
+          "https://thinkvelocity.in/*",
+          "https://gemini.google.com/*",
+          "https://grok.com/*",
+          "https://bolt.new/*",
+          "https://v0.dev/*",
+          "https://gamma.app/*",
+          "https://chat.mistral.ai/*",
+          "https://mistral.ai/*",
+          "https://lovable.dev/*",
+          "https://replit.com/*"
+        ],
+        "js": [
+          "platforms.js",
+          "buttonAnimations.js",
+          "animationconfig.js",
+          "messageBox.js",
+          "messageBoxStates.js",
+          "writingQualityAnalyzer.js",
+          "content-script.js",
+          "trail-finished.js",
+          "credits-finished.js",
+          "content/fileUploadHandler.js"
+        ],
+        "css": [
+          "messageBoxStates.css"
+        ],
+        "run_at": "document_idle"
+      }
+    ],
+    "background": {
+      "service_worker": "background.js",
+      "type": "module"
+    },
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://thinkvelocity.in/ https://*.thinkvelocity.in/ https://api-js.mixpanel.com/ https://*.mixpanel.com/ data: https://fonts.gstatic.com  wss://thinkvelocity.in/python-backend-D/ws/domain-analysis"
+    },
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "api.js",
+          "platforms.js",
+          "analytics/mixpanel.min.js",
+          "src/velocity-inject.css",
+          "assets/logo.png",
+          "assets/logo.png",
+          "assets/desc.png",
+          "src/intro.min.js",
+          "assets/cre.png",
+          "assets/pro.png",
+          "assets/settings-icon.svg",
+          "assets/conc.png",
+          "assets/description.png",
+          "assets/creative.png",
+          "assets/concise.png",
+          "assets/professional.png",
+          "assets/refineprompt.png",
+          "assets/enter_icon.png",
+          "button-styles.css",
+          "buttonAnimations.js",
+          "animationconfig.js",
+          "trail-finished.js",
+          "writingQualityAnalyzer.js",
+          "quality-indicator.css",
+          "stateManager.js",
+          "messageBoxStates.js",
+          "messageBoxStates.css",
+          "suggestionEngine.js",
+          "analytics/*",
+          "assets/*"
+        ],
+        "matches": [
+          "*://chat.openai.com/*",
+          "*://chatgpt.com/*",
+          "*://claude.ai/*",
+          "*://thinkvelocity.in/*",
+          "*://gemini.google.com/*",
+          "*://grok.com/*",
+          "*://bolt.new/*",
+          "*://v0.dev/*",
+          "*://gamma.app/*",
+          "*://chat.mistral.ai/*",
+          "*://mistral.ai/*",
+          "*://lovable.dev/*",
+          "*://replit.com/*"
+        ]
+      }
+    ]
+  }

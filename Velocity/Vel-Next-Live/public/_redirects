@@ -1,0 +1,10 @@
+# Redirect www to non-www (301 permanent redirect)
+# This ensures consistent URLs for better SEO
+https://www.thinkvelocity.in/* https://thinkvelocity.in/:splat 301!
+http://www.thinkvelocity.in/* https://thinkvelocity.in/:splat 301!
+
+# Force HTTPS for non-www
+http://thinkvelocity.in/* https://thinkvelocity.in/:splat 301!
+
+# Handle any additional redirects if needed
+# /old-path /new-path 301 

@@ -1,0 +1,58 @@
+version: "3.9"
+services:
+  python-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: python-backend-container
+    environment:
+      - APP_PORT=8005
+    ports:
+      - "8005:8005"
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8005/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    # depends_on:
+    #   redis:
+    #     condition: service_healthy
+    networks:
+      - python-backend-network
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - venv/
+            - __pycache__/
+            - .git/
+            - logs/
+        - action: rebuild
+          path: requirements.txt
+  # redis:
+  #   image: redis:7-alpine
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis_data:/data
+  #   healthcheck:
+  #     test: ["CMD", "redis-cli", "ping"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #   restart: unless-stopped
+  #   networks:
+  #     - python-backend-network
+networks:
+  python-backend-network:
+    driver: bridge
+# volumes:
+#   redis_data:
