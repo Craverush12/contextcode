@@ -1,0 +1,762 @@
+total 232
+drwxr-xr-x@ 28 toteminteractive  staff    896 Jul  7 16:17 .
+drwxr-xr-x   3 toteminteractive  staff     96 Jul  7 15:50 ..
+drwxr-xr-x@ 14 toteminteractive  staff    448 Jul  7 16:17 .git
+drwxr-xr-x@  4 toteminteractive  staff    128 Jul  7 15:50 .github
+drwxr-xr-x@ 11 toteminteractive  staff    352 Jul  7 15:51 .trunk
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 00_EVIDENCE
+drwxr-xr-x@ 17 toteminteractive  staff    544 Jul  7 15:50 00_foundations
+drwxr-xr-x@ 10 toteminteractive  staff    320 Jul  7 15:50 10_guides_zero_to_hero
+drwxr-xr-x@ 14 toteminteractive  staff    448 Jul  7 15:50 20_templates
+drwxr-xr-x@  4 toteminteractive  staff    128 Jul  7 15:50 30_examples
+drwxr-xr-x@ 15 toteminteractive  staff    480 Jul  7 15:50 40_reference
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 50_contrib
+drwxr-xr-x@  6 toteminteractive  staff    192 Jul  7 15:50 60_protocols
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 70_agents
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 80_field_integration
+drwxr-xr-x@ 15 toteminteractive  staff    480 Jul  7 15:50 Chinese-Bilingual
+-rw-r--r--@  1 toteminteractive  staff  16830 Jul  7 15:50 CITATIONS_v2.md
+-rw-r--r--@  1 toteminteractive  staff  15697 Jul  7 15:50 CITATIONS.md
+-rw-r--r--@  1 toteminteractive  staff  24288 Jul  7 15:50 CLAUDE.md
+-rw-r--r--@  1 toteminteractive  staff      0 Jul  7 16:17 CODEBASE_INDEX.txt
+drwxr-xr-x@  7 toteminteractive  staff    224 Jul  7 15:50 cognitive-tools
+drwxr-xr-x@ 10 toteminteractive  staff    320 Jul  7 15:50 context-schemas
+-rw-r--r--@  1 toteminteractive  staff  24306 Jul  7 15:50 GEMINI.md
+-rw-r--r--@  1 toteminteractive  staff   1067 Jul  7 15:50 LICENSE
+drwxr-xr-x@ 11 toteminteractive  staff    352 Jul  7 15:50 NOCODE
+drwxr-xr-x@  6 toteminteractive  staff    192 Jul  7 15:50 PODCASTS
+-rw-r--r--@  1 toteminteractive  staff  28614 Jul  7 15:50 README.md
+drwxr-xr-x@  7 toteminteractive  staff    224 Jul  7 15:50 STRUCTURE
+
+./.git:
+total 112
+drwxr-xr-x@ 14 toteminteractive  staff    448 Jul  7 16:17 .
+drwxr-xr-x@ 28 toteminteractive  staff    896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff    349 Jul  7 15:50 config
+-rw-r--r--@  1 toteminteractive  staff     55 Jul  7 15:50 cursor_metadata.pb
+-rw-r--r--@  1 toteminteractive  staff     73 Jul  7 15:50 description
+-rw-r--r--@  1 toteminteractive  staff    110 Jul  7 15:50 FETCH_HEAD
+-rw-r--r--@  1 toteminteractive  staff     21 Jul  7 15:50 HEAD
+drwxr-xr-x@ 15 toteminteractive  staff    480 Jul  7 15:50 hooks
+-rw-r--r--@  1 toteminteractive  staff  28820 Jul  7 16:05 index
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 info
+drwxr-xr-x@  4 toteminteractive  staff    128 Jul  7 15:50 logs
+drwxr-xr-x@  4 toteminteractive  staff    128 Jul  7 15:50 objects
+-rw-r--r--@  1 toteminteractive  staff    112 Jul  7 15:50 packed-refs
+drwxr-xr-x@  5 toteminteractive  staff    160 Jul  7 15:50 refs
+
+./.git/hooks:
+total 120
+drwxr-xr-x@ 15 toteminteractive  staff   480 Jul  7 15:50 .
+drwxr-xr-x@ 14 toteminteractive  staff   448 Jul  7 16:17 ..
+-rwxr-xr-x@  1 toteminteractive  staff   478 Jul  7 15:50 applypatch-msg.sample
+-rwxr-xr-x@  1 toteminteractive  staff   896 Jul  7 15:50 commit-msg.sample
+-rwxr-xr-x@  1 toteminteractive  staff  4726 Jul  7 15:50 fsmonitor-watchman.sample
+-rwxr-xr-x@  1 toteminteractive  staff   189 Jul  7 15:50 post-update.sample
+-rwxr-xr-x@  1 toteminteractive  staff   424 Jul  7 15:50 pre-applypatch.sample
+-rwxr-xr-x@  1 toteminteractive  staff  1643 Jul  7 15:50 pre-commit.sample
+-rwxr-xr-x@  1 toteminteractive  staff   416 Jul  7 15:50 pre-merge-commit.sample
+-rwxr-xr-x@  1 toteminteractive  staff  1374 Jul  7 15:50 pre-push.sample
+-rwxr-xr-x@  1 toteminteractive  staff  4898 Jul  7 15:50 pre-rebase.sample
+-rwxr-xr-x@  1 toteminteractive  staff   544 Jul  7 15:50 pre-receive.sample
+-rwxr-xr-x@  1 toteminteractive  staff  1492 Jul  7 15:50 prepare-commit-msg.sample
+-rwxr-xr-x@  1 toteminteractive  staff  2783 Jul  7 15:50 push-to-checkout.sample
+-rwxr-xr-x@  1 toteminteractive  staff  3650 Jul  7 15:50 update.sample
+
+./.git/info:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 14 toteminteractive  staff  448 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff  308 Jul  7 15:50 exclude
+
+./.git/logs:
+total 8
+drwxr-xr-x@  4 toteminteractive  staff  128 Jul  7 15:50 .
+drwxr-xr-x@ 14 toteminteractive  staff  448 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff  217 Jul  7 15:50 HEAD
+drwxr-xr-x@  4 toteminteractive  staff  128 Jul  7 15:50 refs
+
+./.git/logs/refs:
+total 0
+drwxr-xr-x@ 4 toteminteractive  staff  128 Jul  7 15:50 .
+drwxr-xr-x@ 4 toteminteractive  staff  128 Jul  7 15:50 ..
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 heads
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 remotes
+
+./.git/logs/refs/heads:
+total 8
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 4 toteminteractive  staff  128 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff  217 Jul  7 15:50 main
+
+./.git/logs/refs/remotes:
+total 0
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 4 toteminteractive  staff  128 Jul  7 15:50 ..
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 origin
+
+./.git/logs/refs/remotes/origin:
+total 8
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff  217 Jul  7 15:50 HEAD
+
+./.git/objects:
+total 0
+drwxr-xr-x@  4 toteminteractive  staff  128 Jul  7 15:50 .
+drwxr-xr-x@ 14 toteminteractive  staff  448 Jul  7 16:17 ..
+drwxr-xr-x@  2 toteminteractive  staff   64 Jul  7 15:50 info
+drwxr-xr-x@  4 toteminteractive  staff  128 Jul  7 15:50 pack
+
+./.git/objects/info:
+total 0
+drwxr-xr-x@ 2 toteminteractive  staff   64 Jul  7 15:50 .
+drwxr-xr-x@ 4 toteminteractive  staff  128 Jul  7 15:50 ..
+
+./.git/objects/pack:
+total 76728
+drwxr-xr-x@ 4 toteminteractive  staff       128 Jul  7 15:50 .
+drwxr-xr-x@ 4 toteminteractive  staff       128 Jul  7 15:50 ..
+-r--r--r--@ 1 toteminteractive  staff     57604 Jul  7 15:50 pack-2f8e697801773d9441fb2fe5a9cc76b90411ba40.idx
+-r--r--r--@ 1 toteminteractive  staff  38630395 Jul  7 15:50 pack-2f8e697801773d9441fb2fe5a9cc76b90411ba40.pack
+
+./.git/refs:
+total 0
+drwxr-xr-x@  5 toteminteractive  staff  160 Jul  7 15:50 .
+drwxr-xr-x@ 14 toteminteractive  staff  448 Jul  7 16:17 ..
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 heads
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 remotes
+drwxr-xr-x@  2 toteminteractive  staff   64 Jul  7 15:50 tags
+
+./.git/refs/heads:
+total 8
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 5 toteminteractive  staff  160 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff   41 Jul  7 15:50 main
+
+./.git/refs/remotes:
+total 0
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 5 toteminteractive  staff  160 Jul  7 15:50 ..
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 origin
+
+./.git/refs/remotes/origin:
+total 8
+drwxr-xr-x@ 3 toteminteractive  staff  96 Jul  7 15:50 .
+drwxr-xr-x@ 3 toteminteractive  staff  96 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff  30 Jul  7 15:50 HEAD
+
+./.git/refs/tags:
+total 0
+drwxr-xr-x@ 2 toteminteractive  staff   64 Jul  7 15:50 .
+drwxr-xr-x@ 5 toteminteractive  staff  160 Jul  7 15:50 ..
+
+./.github:
+total 136
+drwxr-xr-x@  4 toteminteractive  staff    128 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff    896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff  66508 Jul  7 15:50 CONTRIBUTING.md
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 workflows
+
+./.github/workflows:
+total 8
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 4 toteminteractive  staff  128 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./.trunk:
+total 16
+drwxr-xr-x@ 11 toteminteractive  staff  352 Jul  7 15:51 .
+drwxr-xr-x@ 28 toteminteractive  staff  896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff   80 Jul  7 15:56 .gitignore
+lrwxr-xr-x@  1 toteminteractive  staff   83 Jul  7 15:51 actions -> /Users/toteminteractive/.cache/trunk/repos/9de314e6befcc1149fef06c14991b5f1/actions
+drwxr-xr-x@  6 toteminteractive  staff  192 Jul  7 15:51 configs
+lrwxr-xr-x@  1 toteminteractive  staff   80 Jul  7 15:51 logs -> /Users/toteminteractive/.cache/trunk/repos/9de314e6befcc1149fef06c14991b5f1/logs
+lrwxr-xr-x@  1 toteminteractive  staff   89 Jul  7 15:51 notifications -> /Users/toteminteractive/.cache/trunk/repos/9de314e6befcc1149fef06c14991b5f1/notifications
+lrwxr-xr-x@  1 toteminteractive  staff   79 Jul  7 15:51 out -> /Users/toteminteractive/.cache/trunk/repos/9de314e6befcc1149fef06c14991b5f1/out
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:51 plugins
+lrwxr-xr-x@  1 toteminteractive  staff   81 Jul  7 15:51 tools -> /Users/toteminteractive/.cache/trunk/repos/9de314e6befcc1149fef06c14991b5f1/tools
+-rw-r--r--@  1 toteminteractive  staff  998 Jul  7 15:56 trunk.yaml
+
+./.trunk/configs:
+total 32
+drwxr-xr-x@  6 toteminteractive  staff  192 Jul  7 15:51 .
+drwxr-xr-x@ 11 toteminteractive  staff  352 Jul  7 15:51 ..
+-rw-r--r--@  1 toteminteractive  staff   25 Jul  7 15:51 .isort.cfg
+-rw-r--r--@  1 toteminteractive  staff  109 Jul  7 15:51 .markdownlint.yaml
+-rw-r--r--@  1 toteminteractive  staff  152 Jul  7 15:51 .yamllint.yaml
+-rw-r--r--@  1 toteminteractive  staff  175 Jul  7 15:51 ruff.toml
+
+./.trunk/plugins:
+total 0
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:51 .
+drwxr-xr-x@ 11 toteminteractive  staff  352 Jul  7 15:51 ..
+lrwxr-xr-x@  1 toteminteractive  staff  104 Jul  7 15:51 trunk -> /Users/toteminteractive/.cache/trunk/plugins/https---github-com-trunk-io-plugins/v1.7.1-4ebadccd80b22638
+
+./00_EVIDENCE:
+total 40
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff    896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff  19717 Jul  7 15:50 README.md
+
+./00_foundations:
+total 1104
+drwxr-xr-x@ 17 toteminteractive  staff    544 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff    896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff  11681 Jul  7 15:50 01_atoms_prompting.md
+-rw-r--r--@  1 toteminteractive  staff  19691 Jul  7 15:50 02_molecules_context.md
+-rw-r--r--@  1 toteminteractive  staff  41440 Jul  7 15:50 03_cells_memory.md
+-rw-r--r--@  1 toteminteractive  staff  73015 Jul  7 15:50 04_organs_applications.md
+-rw-r--r--@  1 toteminteractive  staff  29973 Jul  7 15:50 05_cognitive_tools.md
+-rw-r--r--@  1 toteminteractive  staff  59449 Jul  7 15:50 06_advanced_applications.md
+-rw-r--r--@  1 toteminteractive  staff  49576 Jul  7 15:50 07_prompt_programming.md
+-rw-r--r--@  1 toteminteractive  staff  15559 Jul  7 15:50 08_neural_fields_foundations.md
+-rw-r--r--@  1 toteminteractive  staff  28557 Jul  7 15:50 09_persistence_and_resonance.md
+-rw-r--r--@  1 toteminteractive  staff  52516 Jul  7 15:50 10_field_orchestration.md
+-rw-r--r--@  1 toteminteractive  staff  45060 Jul  7 15:50 11_emergence_and_attractor_dynamics.md
+-rw-r--r--@  1 toteminteractive  staff  21086 Jul  7 15:50 12_symbolic_mechanisms.md
+-rw-r--r--@  1 toteminteractive  staff  23047 Jul  7 15:50 13_quantum_semantics.md
+-rw-r--r--@  1 toteminteractive  staff  46698 Jul  7 15:50 14_unified_field_theory.md
+-rw-r--r--@  1 toteminteractive  staff  17980 Jul  7 15:50 README.md
+
+./10_guides_zero_to_hero:
+total 592
+drwxr-xr-x@ 10 toteminteractive  staff    320 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff    896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff   9072 Jul  7 15:50 01_min_prompt.py
+-rw-r--r--@  1 toteminteractive  staff  33124 Jul  7 15:50 02_expand_context.py
+-rw-r--r--@  1 toteminteractive  staff  48398 Jul  7 15:50 03_control_loops.py
+-rw-r--r--@  1 toteminteractive  staff  41442 Jul  7 15:50 04_rag_recipes.py
+-rw-r--r--@  1 toteminteractive  staff  52011 Jul  7 15:50 05_prompt_programs.py
+-rw-r--r--@  1 toteminteractive  staff  62559 Jul  7 15:50 06_schema_design.py
+-rw-r--r--@  1 toteminteractive  staff  35013 Jul  7 15:50 07_recursive_patterns.py
+-rw-r--r--@  1 toteminteractive  staff      1 Jul  7 15:50 README.md
+
+./20_templates:
+total 680
+drwxr-xr-x@ 14 toteminteractive  staff    448 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff    896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff  88400 Jul  7 15:50 control_loop.py
+-rw-r--r--@  1 toteminteractive  staff  41450 Jul  7 15:50 field_protocol_shells.py
+-rw-r--r--@  1 toteminteractive  staff  46772 Jul  7 15:50 field_resonance_measure.py
+-rw-r--r--@  1 toteminteractive  staff   3559 Jul  7 15:50 minimal_context.yaml
+-rw-r--r--@  1 toteminteractive  staff  12792 Jul  7 15:50 neural_field_context.yaml
+-rw-r--r--@  1 toteminteractive  staff  43623 Jul  7 15:50 prompt_program_template.py
+drwxr-xr-x@ 10 toteminteractive  staff    320 Jul  7 15:50 PROMPTS
+-rw-r--r--@  1 toteminteractive  staff      1 Jul  7 15:50 README.md
+-rw-r--r--@  1 toteminteractive  staff  32429 Jul  7 15:50 recursive_context.py
+-rw-r--r--@  1 toteminteractive  staff   9746 Jul  7 15:50 schema_template.json
+-rw-r--r--@  1 toteminteractive  staff   9715 Jul  7 15:50 schema_template.yaml
+-rw-r--r--@  1 toteminteractive  staff  33444 Jul  7 15:50 scoring_functions.py
+
+./20_templates/PROMPTS:
+total 224
+drwxr-xr-x@ 10 toteminteractive  staff    320 Jul  7 15:50 .
+drwxr-xr-x@ 14 toteminteractive  staff    448 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff   8226 Jul  7 15:50 attractor_design.md
+-rw-r--r--@  1 toteminteractive  staff   5660 Jul  7 15:50 chain_of_thought.md
+-rw-r--r--@  1 toteminteractive  staff  48100 Jul  7 15:50 expert_guides.md
+-rw-r--r--@  1 toteminteractive  staff   4910 Jul  7 15:50 few_shot_learning.md
+-rw-r--r--@  1 toteminteractive  staff   6079 Jul  7 15:50 minimal_context.md
+-rw-r--r--@  1 toteminteractive  staff   9991 Jul  7 15:50 README.md
+-rw-r--r--@  1 toteminteractive  staff   7821 Jul  7 15:50 self_organization.md
+-rw-r--r--@  1 toteminteractive  staff   8132 Jul  7 15:50 verification_loop.md
+
+./30_examples:
+total 8
+drwxr-xr-x@  4 toteminteractive  staff  128 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff  896 Jul  7 16:17 ..
+drwxr-xr-x@  8 toteminteractive  staff  256 Jul  7 15:50 00_toy_chatbot
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./30_examples/00_toy_chatbot:
+total 568
+drwxr-xr-x@ 8 toteminteractive  staff    256 Jul  7 15:50 .
+drwxr-xr-x@ 4 toteminteractive  staff    128 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff  29514 Jul  7 15:50 chatbot_core.py.md
+-rw-r--r--@ 1 toteminteractive  staff  82581 Jul  7 15:50 context_field.py.md
+-rw-r--r--@ 1 toteminteractive  staff  41505 Jul  7 15:50 conversation_examples.py.md
+-rw-r--r--@ 1 toteminteractive  staff  53792 Jul  7 15:50 meta_recursive_demo.py.md
+-rw-r--r--@ 1 toteminteractive  staff  63132 Jul  7 15:50 protocol_shells.py.md
+-rw-r--r--@ 1 toteminteractive  staff   2581 Jul  7 15:50 README.md
+
+./40_reference:
+total 2480
+drwxr-xr-x@ 15 toteminteractive  staff     480 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff     896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff  140450 Jul  7 15:50 advanced_latent_mapping.md
+-rw-r--r--@  1 toteminteractive  staff  123256 Jul  7 15:50 attractor_dynamics.md
+-rw-r--r--@  1 toteminteractive  staff   77124 Jul  7 15:50 cognitive_patterns.md
+-rw-r--r--@  1 toteminteractive  staff  121364 Jul  7 15:50 emergence_signatures.md
+-rw-r--r--@  1 toteminteractive  staff   68251 Jul  7 15:50 eval_checklist.md
+-rw-r--r--@  1 toteminteractive  staff   70784 Jul  7 15:50 field_mapping.md
+-rw-r--r--@  1 toteminteractive  staff   96109 Jul  7 15:50 latent_mapping.md
+-rw-r--r--@  1 toteminteractive  staff   84210 Jul  7 15:50 patterns.md
+-rw-r--r--@  1 toteminteractive  staff       1 Jul  7 15:50 README.md
+-rw-r--r--@  1 toteminteractive  staff  185299 Jul  7 15:50 retrieval_indexing.md
+-rw-r--r--@  1 toteminteractive  staff   77341 Jul  7 15:50 schema_cookbook.md
+-rw-r--r--@  1 toteminteractive  staff  142253 Jul  7 15:50 symbolic_residue_types.md
+-rw-r--r--@  1 toteminteractive  staff   56363 Jul  7 15:50 token_budgeting.md
+
+./50_contrib:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff  896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./60_protocols:
+total 24
+drwxr-xr-x@  6 toteminteractive  staff    192 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff    896 Jul  7 16:17 ..
+drwxr-xr-x@  4 toteminteractive  staff    128 Jul  7 15:50 digests
+-rw-r--r--@  1 toteminteractive  staff  12056 Jul  7 15:50 README.md
+drwxr-xr-x@  5 toteminteractive  staff    160 Jul  7 15:50 schemas
+drwxr-xr-x@  9 toteminteractive  staff    288 Jul  7 15:50 shells
+
+./60_protocols/digests:
+total 24
+drwxr-xr-x@ 4 toteminteractive  staff   128 Jul  7 15:50 .
+drwxr-xr-x@ 6 toteminteractive  staff   192 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff  4696 Jul  7 15:50 attractor.co.emerge.digest.md
+-rw-r--r--@ 1 toteminteractive  staff  3902 Jul  7 15:50 README.md
+
+./60_protocols/schemas:
+total 48
+drwxr-xr-x@ 5 toteminteractive  staff    160 Jul  7 15:50 .
+drwxr-xr-x@ 6 toteminteractive  staff    192 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff   2884 Jul  7 15:50 protocolShell.v1.json
+-rw-r--r--@ 1 toteminteractive  staff      1 Jul  7 15:50 README.md
+-rw-r--r--@ 1 toteminteractive  staff  12370 Jul  7 15:50 symbolicResidue.v1.json
+
+./60_protocols/shells:
+total 648
+drwxr-xr-x@ 9 toteminteractive  staff    288 Jul  7 15:50 .
+drwxr-xr-x@ 6 toteminteractive  staff    192 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff  42762 Jul  7 15:50 attractor.co.emerge.shell.md
+-rw-r--r--@ 1 toteminteractive  staff  17094 Jul  7 15:50 context.memory.persistence.attractor.shell.md
+-rw-r--r--@ 1 toteminteractive  staff  63378 Jul  7 15:50 field.resonance.scaffold.shell.md
+-rw-r--r--@ 1 toteminteractive  staff  91397 Jul  7 15:50 field.self_repair.shell.md
+-rw-r--r--@ 1 toteminteractive  staff      1 Jul  7 15:50 README.md
+-rw-r--r--@ 1 toteminteractive  staff  44657 Jul  7 15:50 recursive.emergence.shell.md
+-rw-r--r--@ 1 toteminteractive  staff  55692 Jul  7 15:50 recursive.memory.attractor.shell.md
+
+./70_agents:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff  896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./80_field_integration:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff  896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./Chinese-Bilingual:
+total 104
+drwxr-xr-x@ 15 toteminteractive  staff    480 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff    896 Jul  7 16:17 ..
+drwxr-xr-x@ 17 toteminteractive  staff    544 Jul  7 15:50 00_foundations
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 00_SKEPTIC
+drwxr-xr-x@ 10 toteminteractive  staff    320 Jul  7 15:50 10_guides_zero_to_hero
+drwxr-xr-x@ 13 toteminteractive  staff    416 Jul  7 15:50 20_templates
+drwxr-xr-x@  4 toteminteractive  staff    128 Jul  7 15:50 30_examples
+drwxr-xr-x@  9 toteminteractive  staff    288 Jul  7 15:50 40_reference
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 50_contrib
+drwxr-xr-x@  6 toteminteractive  staff    192 Jul  7 15:50 60_protocols
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 70_agents
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 80_field_integration
+drwxr-xr-x@  7 toteminteractive  staff    224 Jul  7 15:50 cognitive-tools
+drwxr-xr-x@ 11 toteminteractive  staff    352 Jul  7 15:50 NOCODE
+-rw-r--r--@  1 toteminteractive  staff  49168 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/00_foundations:
+total 1504
+drwxr-xr-x@ 17 toteminteractive  staff    544 Jul  7 15:50 .
+drwxr-xr-x@ 15 toteminteractive  staff    480 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff  16834 Jul  7 15:50 01_atoms_prompting.md
+-rw-r--r--@  1 toteminteractive  staff  25585 Jul  7 15:50 02_molecules_context.md
+-rw-r--r--@  1 toteminteractive  staff  49879 Jul  7 15:50 03_cells_memory.md
+-rw-r--r--@  1 toteminteractive  staff  84895 Jul  7 15:50 04_organs_applications.md
+-rw-r--r--@  1 toteminteractive  staff  44969 Jul  7 15:50 05_cognitive_tools.md
+-rw-r--r--@  1 toteminteractive  staff  65898 Jul  7 15:50 06_advanced_applications.md
+-rw-r--r--@  1 toteminteractive  staff  61215 Jul  7 15:50 07_prompt_programming.md
+-rw-r--r--@  1 toteminteractive  staff  27844 Jul  7 15:50 08_neural_fields_foundations.md
+-rw-r--r--@  1 toteminteractive  staff  42700 Jul  7 15:50 09_persistence_and_resonance.md
+-rw-r--r--@  1 toteminteractive  staff  74987 Jul  7 15:50 10_field_orchestration.md
+-rw-r--r--@  1 toteminteractive  staff  71189 Jul  7 15:50 11_emergence_and_attractor_dynamics.md
+-rw-r--r--@  1 toteminteractive  staff  34284 Jul  7 15:50 12_symbolic_mechanisms.md
+-rw-r--r--@  1 toteminteractive  staff  37331 Jul  7 15:50 13_quantum_semantics.md
+-rw-r--r--@  1 toteminteractive  staff  72835 Jul  7 15:50 14_unified_field_theory.md
+-rw-r--r--@  1 toteminteractive  staff  26920 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/00_SKEPTIC:
+total 72
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 .
+drwxr-xr-x@ 15 toteminteractive  staff    480 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff  36434 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/10_guides_zero_to_hero:
+total 592
+drwxr-xr-x@ 10 toteminteractive  staff    320 Jul  7 15:50 .
+drwxr-xr-x@ 15 toteminteractive  staff    480 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff   9072 Jul  7 15:50 01_min_prompt.py
+-rw-r--r--@  1 toteminteractive  staff  33124 Jul  7 15:50 02_expand_context.py
+-rw-r--r--@  1 toteminteractive  staff  48398 Jul  7 15:50 03_control_loops.py
+-rw-r--r--@  1 toteminteractive  staff  41442 Jul  7 15:50 04_rag_recipes.py
+-rw-r--r--@  1 toteminteractive  staff  52011 Jul  7 15:50 05_prompt_programs.py
+-rw-r--r--@  1 toteminteractive  staff  62559 Jul  7 15:50 06_schema_design.py
+-rw-r--r--@  1 toteminteractive  staff  35013 Jul  7 15:50 07_recursive_patterns.py
+-rw-r--r--@  1 toteminteractive  staff      1 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/20_templates:
+total 680
+drwxr-xr-x@ 13 toteminteractive  staff    416 Jul  7 15:50 .
+drwxr-xr-x@ 15 toteminteractive  staff    480 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff  88400 Jul  7 15:50 control_loop.py
+-rw-r--r--@  1 toteminteractive  staff  41450 Jul  7 15:50 field_protocol_shells.py
+-rw-r--r--@  1 toteminteractive  staff  46772 Jul  7 15:50 field_resonance_measure.py
+-rw-r--r--@  1 toteminteractive  staff   3559 Jul  7 15:50 minimal_context.yaml
+-rw-r--r--@  1 toteminteractive  staff  12792 Jul  7 15:50 neural_field_context.yaml
+-rw-r--r--@  1 toteminteractive  staff  43623 Jul  7 15:50 prompt_program_template.py
+-rw-r--r--@  1 toteminteractive  staff      1 Jul  7 15:50 README.md
+-rw-r--r--@  1 toteminteractive  staff  32429 Jul  7 15:50 recursive_context.py
+-rw-r--r--@  1 toteminteractive  staff   9746 Jul  7 15:50 schema_template.json
+-rw-r--r--@  1 toteminteractive  staff   9715 Jul  7 15:50 schema_template.yaml
+-rw-r--r--@  1 toteminteractive  staff  33444 Jul  7 15:50 scoring_functions.py
+
+./Chinese-Bilingual/30_examples:
+total 8
+drwxr-xr-x@  4 toteminteractive  staff  128 Jul  7 15:50 .
+drwxr-xr-x@ 15 toteminteractive  staff  480 Jul  7 15:50 ..
+drwxr-xr-x@  8 toteminteractive  staff  256 Jul  7 15:50 00_toy_chatbot
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/30_examples/00_toy_chatbot:
+total 624
+drwxr-xr-x@ 8 toteminteractive  staff    256 Jul  7 15:50 .
+drwxr-xr-x@ 4 toteminteractive  staff    128 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff  31964 Jul  7 15:50 chatbot_core.py.md
+-rw-r--r--@ 1 toteminteractive  staff  90309 Jul  7 15:50 context_field.py.md
+-rw-r--r--@ 1 toteminteractive  staff  45212 Jul  7 15:50 conversation_examples.py.md
+-rw-r--r--@ 1 toteminteractive  staff  62020 Jul  7 15:50 meta_recursive_demo.py.md
+-rw-r--r--@ 1 toteminteractive  staff  65552 Jul  7 15:50 protocol_shells.py.md
+-rw-r--r--@ 1 toteminteractive  staff   5549 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/40_reference:
+total 1632
+drwxr-xr-x@  9 toteminteractive  staff     288 Jul  7 15:50 .
+drwxr-xr-x@ 15 toteminteractive  staff     480 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff  129380 Jul  7 15:50 cognitive_patterns.md
+-rw-r--r--@  1 toteminteractive  staff  115144 Jul  7 15:50 eval_checklist.md
+-rw-r--r--@  1 toteminteractive  staff  132971 Jul  7 15:50 patterns.md
+-rw-r--r--@  1 toteminteractive  staff       1 Jul  7 15:50 README.md
+-rw-r--r--@  1 toteminteractive  staff  241152 Jul  7 15:50 retrieval_indexing.md
+-rw-r--r--@  1 toteminteractive  staff  129696 Jul  7 15:50 schema_cookbook.md
+-rw-r--r--@  1 toteminteractive  staff   72677 Jul  7 15:50 token_budgeting.md
+
+./Chinese-Bilingual/50_contrib:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 15 toteminteractive  staff  480 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/60_protocols:
+total 48
+drwxr-xr-x@  6 toteminteractive  staff    192 Jul  7 15:50 .
+drwxr-xr-x@ 15 toteminteractive  staff    480 Jul  7 15:50 ..
+drwxr-xr-x@  4 toteminteractive  staff    128 Jul  7 15:50 digests
+-rw-r--r--@  1 toteminteractive  staff  22277 Jul  7 15:50 README.md
+drwxr-xr-x@  5 toteminteractive  staff    160 Jul  7 15:50 schemas
+drwxr-xr-x@  9 toteminteractive  staff    288 Jul  7 15:50 shells
+
+./Chinese-Bilingual/60_protocols/digests:
+total 48
+drwxr-xr-x@ 4 toteminteractive  staff    128 Jul  7 15:50 .
+drwxr-xr-x@ 6 toteminteractive  staff    192 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff   9386 Jul  7 15:50 attractor.co.emerge.digest.md
+-rw-r--r--@ 1 toteminteractive  staff  10393 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/60_protocols/schemas:
+total 48
+drwxr-xr-x@ 5 toteminteractive  staff    160 Jul  7 15:50 .
+drwxr-xr-x@ 6 toteminteractive  staff    192 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff   2884 Jul  7 15:50 protocolShell.v1.json
+-rw-r--r--@ 1 toteminteractive  staff      1 Jul  7 15:50 README.md
+-rw-r--r--@ 1 toteminteractive  staff  12370 Jul  7 15:50 symbolicResidue.v1.json
+
+./Chinese-Bilingual/60_protocols/shells:
+total 856
+drwxr-xr-x@ 9 toteminteractive  staff     288 Jul  7 15:50 .
+drwxr-xr-x@ 6 toteminteractive  staff     192 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff   63858 Jul  7 15:50 attractor.co.emerge.shell.md
+-rw-r--r--@ 1 toteminteractive  staff   23910 Jul  7 15:50 context.memory.persistence.attractor.shell.md
+-rw-r--r--@ 1 toteminteractive  staff   84698 Jul  7 15:50 field.resonance.scaffold.shell.md
+-rw-r--r--@ 1 toteminteractive  staff  112926 Jul  7 15:50 field.self_repair.shell.md
+-rw-r--r--@ 1 toteminteractive  staff       1 Jul  7 15:50 README.md
+-rw-r--r--@ 1 toteminteractive  staff   64542 Jul  7 15:50 recursive.emergence.shell.md
+-rw-r--r--@ 1 toteminteractive  staff   77267 Jul  7 15:50 recursive.memory.attractor.shell.md
+
+./Chinese-Bilingual/70_agents:
+total 0
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 15 toteminteractive  staff  480 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff    0 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/80_field_integration:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 15 toteminteractive  staff  480 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/cognitive-tools:
+total 32
+drwxr-xr-x@  7 toteminteractive  staff    224 Jul  7 15:50 .
+drwxr-xr-x@ 15 toteminteractive  staff    480 Jul  7 15:50 ..
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 cognitive-architectures
+drwxr-xr-x@  5 toteminteractive  staff    160 Jul  7 15:50 cognitive-programs
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 cognitive-schemas
+drwxr-xr-x@  7 toteminteractive  staff    224 Jul  7 15:50 cognitive-templates
+-rw-r--r--@  1 toteminteractive  staff  14811 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/cognitive-tools/cognitive-architectures:
+total 8
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 7 toteminteractive  staff  224 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/cognitive-tools/cognitive-programs:
+total 176
+drwxr-xr-x@ 5 toteminteractive  staff    160 Jul  7 15:50 .
+drwxr-xr-x@ 7 toteminteractive  staff    224 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff  48023 Jul  7 15:50 advanced-programs.md
+-rw-r--r--@ 1 toteminteractive  staff  36284 Jul  7 15:50 basic-programs.md
+-rw-r--r--@ 1 toteminteractive  staff      1 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/cognitive-tools/cognitive-schemas:
+total 8
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 7 toteminteractive  staff  224 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/cognitive-tools/cognitive-templates:
+total 216
+drwxr-xr-x@ 7 toteminteractive  staff    224 Jul  7 15:50 .
+drwxr-xr-x@ 7 toteminteractive  staff    224 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff  29364 Jul  7 15:50 composition.md
+-rw-r--r--@ 1 toteminteractive  staff      1 Jul  7 15:50 README.md
+-rw-r--r--@ 1 toteminteractive  staff  24604 Jul  7 15:50 reasoning.md
+-rw-r--r--@ 1 toteminteractive  staff  16704 Jul  7 15:50 understanding.md
+-rw-r--r--@ 1 toteminteractive  staff  23967 Jul  7 15:50 verification.md
+
+./Chinese-Bilingual/NOCODE:
+total 200
+drwxr-xr-x@ 11 toteminteractive  staff    352 Jul  7 15:50 .
+drwxr-xr-x@ 15 toteminteractive  staff    480 Jul  7 15:50 ..
+drwxr-xr-x@ 12 toteminteractive  staff    384 Jul  7 15:50 00_foundations
+drwxr-xr-x@  8 toteminteractive  staff    256 Jul  7 15:50 10_mental_models
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 20_practical_protocols
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 30_field_techniques
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 40_protocol_design
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 50_advanced_integration
+-rw-r--r--@  1 toteminteractive  staff  74405 Jul  7 15:50 NOCODE.md
+-rw-r--r--@  1 toteminteractive  staff  20922 Jul  7 15:50 README.md
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 resources
+
+./Chinese-Bilingual/NOCODE/00_foundations:
+total 1664
+drwxr-xr-x@ 12 toteminteractive  staff     384 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff     352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff   37067 Jul  7 15:50 01_introduction.md
+-rw-r--r--@  1 toteminteractive  staff   44230 Jul  7 15:50 02_token_budgetng.md
+-rw-r--r--@  1 toteminteractive  staff   87851 Jul  7 15:50 03_protocol_shells.md
+-rw-r--r--@  1 toteminteractive  staff  101705 Jul  7 15:50 04_pareto_lang.md
+-rw-r--r--@  1 toteminteractive  staff   43924 Jul  7 15:50 05_field_theory.md
+-rw-r--r--@  1 toteminteractive  staff   38654 Jul  7 15:50 06_meta_recursion.md
+-rw-r--r--@  1 toteminteractive  staff   43331 Jul  7 15:50 07_interpretability.md
+-rw-r--r--@  1 toteminteractive  staff   97685 Jul  7 15:50 08_collaboration.md
+-rw-r--r--@  1 toteminteractive  staff  137869 Jul  7 15:50 09_cross_modal.md
+-rw-r--r--@  1 toteminteractive  staff  201935 Jul  7 15:50 10_cross_model.md
+
+./Chinese-Bilingual/NOCODE/10_mental_models:
+total 1080
+drwxr-xr-x@  8 toteminteractive  staff     256 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff     352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff   51972 Jul  7 15:50 01_garden_model.md
+-rw-r--r--@  1 toteminteractive  staff  101149 Jul  7 15:50 02_budget_model.md
+-rw-r--r--@  1 toteminteractive  staff  135135 Jul  7 15:50 03_river_model.md
+-rw-r--r--@  1 toteminteractive  staff  118082 Jul  7 15:50 04_biopsychosocial_model.md
+-rw-r--r--@  1 toteminteractive  staff  136827 Jul  7 15:50 05_alchemy_model.md
+-rw-r--r--@  1 toteminteractive  staff       1 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/NOCODE/20_practical_protocols:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff  352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/NOCODE/30_field_techniques:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff  352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/NOCODE/40_protocol_design:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff  352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/NOCODE/50_advanced_integration:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff  352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./Chinese-Bilingual/NOCODE/resources:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff  352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./cognitive-tools:
+total 16
+drwxr-xr-x@  7 toteminteractive  staff   224 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff   896 Jul  7 16:17 ..
+drwxr-xr-x@  3 toteminteractive  staff    96 Jul  7 15:50 cognitive-architectures
+drwxr-xr-x@  5 toteminteractive  staff   160 Jul  7 15:50 cognitive-programs
+drwxr-xr-x@  3 toteminteractive  staff    96 Jul  7 15:50 cognitive-schemas
+drwxr-xr-x@  7 toteminteractive  staff   224 Jul  7 15:50 cognitive-templates
+-rw-r--r--@  1 toteminteractive  staff  7698 Jul  7 15:50 README.md
+
+./cognitive-tools/cognitive-architectures:
+total 8
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 7 toteminteractive  staff  224 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./cognitive-tools/cognitive-programs:
+total 152
+drwxr-xr-x@ 5 toteminteractive  staff    160 Jul  7 15:50 .
+drwxr-xr-x@ 7 toteminteractive  staff    224 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff  44483 Jul  7 15:50 advanced-programs.md
+-rw-r--r--@ 1 toteminteractive  staff  28514 Jul  7 15:50 basic-programs.md
+-rw-r--r--@ 1 toteminteractive  staff      1 Jul  7 15:50 README.md
+
+./cognitive-tools/cognitive-schemas:
+total 8
+drwxr-xr-x@ 3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 7 toteminteractive  staff  224 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./cognitive-tools/cognitive-templates:
+total 160
+drwxr-xr-x@ 7 toteminteractive  staff    224 Jul  7 15:50 .
+drwxr-xr-x@ 7 toteminteractive  staff    224 Jul  7 15:50 ..
+-rw-r--r--@ 1 toteminteractive  staff  20909 Jul  7 15:50 composition.md
+-rw-r--r--@ 1 toteminteractive  staff      1 Jul  7 15:50 README.md
+-rw-r--r--@ 1 toteminteractive  staff  17399 Jul  7 15:50 reasoning.md
+-rw-r--r--@ 1 toteminteractive  staff  10438 Jul  7 15:50 understanding.md
+-rw-r--r--@ 1 toteminteractive  staff  17393 Jul  7 15:50 verification.md
+
+./context-schemas:
+total 480
+drwxr-xr-x@ 10 toteminteractive  staff    320 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff    896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff  22413 Jul  7 15:50 context_v2.0.json
+-rw-r--r--@  1 toteminteractive  staff  48150 Jul  7 15:50 context_v3.0.json
+-rw-r--r--@  1 toteminteractive  staff  22193 Jul  7 15:50 context_v3.5.json
+-rw-r--r--@  1 toteminteractive  staff  33011 Jul  7 15:50 context_v4.0.json
+-rw-r--r--@  1 toteminteractive  staff  29832 Jul  7 15:50 context_v5.0.json
+-rw-r--r--@  1 toteminteractive  staff  56834 Jul  7 15:50 context_v6.0.json
+-rw-r--r--@  1 toteminteractive  staff  13956 Jul  7 15:50 context.json
+-rw-r--r--@  1 toteminteractive  staff      1 Jul  7 15:50 README.md
+
+./NOCODE:
+total 160
+drwxr-xr-x@ 11 toteminteractive  staff    352 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff    896 Jul  7 16:17 ..
+drwxr-xr-x@ 12 toteminteractive  staff    384 Jul  7 15:50 00_foundations
+drwxr-xr-x@  8 toteminteractive  staff    256 Jul  7 15:50 10_mental_models
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 20_practical_protocols
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 30_field_techniques
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 40_protocol_design
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 50_advanced_integration
+-rw-r--r--@  1 toteminteractive  staff  64815 Jul  7 15:50 NOCODE.md
+-rw-r--r--@  1 toteminteractive  staff  12771 Jul  7 15:50 README.md
+drwxr-xr-x@  3 toteminteractive  staff     96 Jul  7 15:50 resources
+
+./NOCODE/00_foundations:
+total 1208
+drwxr-xr-x@ 12 toteminteractive  staff     384 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff     352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff   26502 Jul  7 15:50 01_introduction.md
+-rw-r--r--@  1 toteminteractive  staff   26048 Jul  7 15:50 02_token_budgetng.md
+-rw-r--r--@  1 toteminteractive  staff   65102 Jul  7 15:50 03_protocol_shells.md
+-rw-r--r--@  1 toteminteractive  staff   67472 Jul  7 15:50 04_pareto_lang.md
+-rw-r--r--@  1 toteminteractive  staff   25813 Jul  7 15:50 05_field_theory.md
+-rw-r--r--@  1 toteminteractive  staff   25267 Jul  7 15:50 06_meta_recursion.md
+-rw-r--r--@  1 toteminteractive  staff   28049 Jul  7 15:50 07_interpretability.md
+-rw-r--r--@  1 toteminteractive  staff   72536 Jul  7 15:50 08_collaboration.md
+-rw-r--r--@  1 toteminteractive  staff  102843 Jul  7 15:50 09_cross_modal.md
+-rw-r--r--@  1 toteminteractive  staff  156784 Jul  7 15:50 10_cross_model.md
+
+./NOCODE/10_mental_models:
+total 928
+drwxr-xr-x@  8 toteminteractive  staff     256 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff     352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff   34687 Jul  7 15:50 01_garden_model.md
+-rw-r--r--@  1 toteminteractive  staff   85380 Jul  7 15:50 02_budget_model.md
+-rw-r--r--@  1 toteminteractive  staff  112908 Jul  7 15:50 03_river_model.md
+-rw-r--r--@  1 toteminteractive  staff  104990 Jul  7 15:50 04_biopsychosocial_model.md
+-rw-r--r--@  1 toteminteractive  staff  123233 Jul  7 15:50 05_alchemy_model.md
+-rw-r--r--@  1 toteminteractive  staff       1 Jul  7 15:50 README.md
+
+./NOCODE/20_practical_protocols:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff  352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./NOCODE/30_field_techniques:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff  352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./NOCODE/40_protocol_design:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff  352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./NOCODE/50_advanced_integration:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff  352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./NOCODE/resources:
+total 8
+drwxr-xr-x@  3 toteminteractive  staff   96 Jul  7 15:50 .
+drwxr-xr-x@ 11 toteminteractive  staff  352 Jul  7 15:50 ..
+-rw-r--r--@  1 toteminteractive  staff    1 Jul  7 15:50 README.md
+
+./PODCASTS:
+total 70416
+drwxr-xr-x@  6 toteminteractive  staff       192 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff       896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff  22321742 Jul  7 15:50 Context Engineering Deep Dive.mp4
+-rw-r--r--@  1 toteminteractive  staff   4157169 Jul  7 15:50 Context Engineering Mini Overview.mp4
+-rw-r--r--@  1 toteminteractive  staff   9564839 Jul  7 15:50 Context Engineering Overview.mp4
+-rw-r--r--@  1 toteminteractive  staff       205 Jul  7 15:50 README.md
+
+./STRUCTURE:
+total 184
+drwxr-xr-x@  7 toteminteractive  staff    224 Jul  7 15:50 .
+drwxr-xr-x@ 28 toteminteractive  staff    896 Jul  7 16:17 ..
+-rw-r--r--@  1 toteminteractive  staff   3915 Jul  7 15:50 README.md
+-rw-r--r--@  1 toteminteractive  staff  23851 Jul  7 15:50 STRUCTURE_v2.md
+-rw-r--r--@  1 toteminteractive  staff  26431 Jul  7 15:50 STRUCTURE_v3.md
+-rw-r--r--@  1 toteminteractive  staff  19036 Jul  7 15:50 STRUCTURE.md
+-rw-r--r--@  1 toteminteractive  staff  15667 Jul  7 15:50 TREE.md

@@ -142,6 +142,33 @@ graph TD
     class I,I1,I2 meta
 ```
 
+## Project Roadmap & Services
+
+This repo now hosts **Context-Engineering v0.1**—a modular, micro-service platform built on top of the original Velocity PromptEnhancement engine.
+
+* **Architecture Overview:** see `PRDs/Implementation_Roadmap.md`  
+* **Detailed PRDs:** one file per Functional Requirement under `PRDs/` (FR-1 … FR-10).  
+* **Migration Strategy:** we are **extract-and-evolving** the working monolith in `Velocity/PromptEnhancement` into stand-alone services:
+  1. `prompt-engine-svc`  – exposes `/prompt`, `/refine` (FR-1)  
+  2. `intent-router-svc`  – intent embedding & model selection (FR-3)  
+  3. `executor-svc`       – parallel multi-LLM calls (FR-4)  
+  4. `conversation-svc`   – Neural-field session context (FR-5)  
+  5. `validator-svc`      – on-demand answer audit (FR-6)  
+  6. `prefs-svc`          – learning user preferences (FR-7)
+
+Quick-start (local dev):
+```bash
+# clone and start Prompt Enhancement service only
+cd Velocity/PromptEnhancement
+docker compose up --build -d  # http://localhost:8000/health
+
+# run full stack (after extraction)
+cd deploy
+docker compose up -d  # gateway + all micro-services
+```
+
+---
+
 ## Under Construction
 
 ```python
